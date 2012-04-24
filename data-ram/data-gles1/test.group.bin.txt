@@ -1,0 +1,70 @@
+ResGroupResources:
+	CIwUIElement (0x6097ed50)
+		"Main" (0x7c9a7f6a)
+		CIwUIImage (0x8a5d37c9)
+			"background" (0x677e1785)
+			Size: 75
+		CIwUILabel (0x8a8cf0c6)
+			"Label" (0xfd835a5)
+			CIwUIButton (0xc64b7cc2)
+				"Options" (0x71f05091)
+				Size: 137
+			CIwUIButton (0xc64b7cc2)
+				"Back" (0x7c947676)
+				Size: 134
+			Size: 385
+		CIwUIScrollableView (0xd72ba7c4)
+			"List" (0x7c9a1661)
+			Size: 129
+		CIwUILayoutVertical::Item (0xe97a0d21)
+			"Label" (0xfd835a5)
+			Size: 31
+		CIwUILayoutVertical::Item (0xe97a0d21)
+			"List" (0x7c9a1661)
+			Size: 31
+		Size: 746
+	CIwUIElement (0x6097ed50)
+		"Item" (0x7c989e34)
+		CIwUIImage (0x8a5d37c9)
+			"Icon" (0x7c98572e)
+			Size: 75
+		CIwUIButton (0xc64b7cc2)
+			"Name" (0x7c9b0c46)
+			CIwUILabel (0x8a8cf0c6)
+				"Desc" (0x7c95a244)
+				Size: 132
+			Size: 278
+		CIwUILayoutHorizontal::Item (0x6b1ae731)
+			"Icon" (0x7c98572e)
+			Size: 55
+		CIwUILayoutHorizontal::Item (0x6b1ae731)
+			"Name" (0x7c9b0c46)
+			Size: 55
+		Size: 549
+	ResList 'CIwUIElement' pos:73 size:1305
+
+	CIwUIStylesheet (0xb4502910)
+		"iwui" (0x7c98ad03)
+		CIwUIPropertySet (0xc8e42197)
+			"<font_title>" (0x779f46f7)
+			Size: 92
+		CIwUIPropertySet (0xc8e42197)
+			"<font_heading>" (0x68ae3665)
+			Size: 92
+		CIwUIPropertySet (0xc8e42197)
+			"<font_body>" (0x95c22243)
+			Size: 92
+		CIwUIPropertySet (0xc8e42197)
+			"<button>" (0x6c4c9f3b)
+			Size: 59
+		CIwUIPropertySet (0xc8e42197)
+			"<icon>" (0x9b78c788)
+			Size: 47
+		CIwUIPropertySet (0xc8e42197)
+			"<background>" (0x3d83e7bf)
+			Size: 59
+		Size: 457
+	ResList 'CIwUIStylesheet' pos:1378 size:467
+
+ResGroupResources: Wrote 1776 bytes to CIwResGroup "Test"
+

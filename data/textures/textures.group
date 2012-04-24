@@ -1,0 +1,15 @@
+CIwResGroup
+
+{
+	
+	name textures
+
+
+	./background.tga
+	
+	./button.tga
+
+	./quit.png
+
+
+}

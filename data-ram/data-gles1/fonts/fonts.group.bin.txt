@@ -1,0 +1,20 @@
+ResGroupResources:
+	CIwGxFont (0xa68776be)
+		"font_tiny" (0xf551e39f)
+		Size: 9895
+	CIwGxFont (0xa68776be)
+		"font_small" (0x9f7e37f4)
+		Size: 67201
+	CIwGxFont (0xa68776be)
+		"font_medium" (0x80b7189c)
+		Size: 71361
+	CIwGxFont (0xa68776be)
+		"font_large" (0x9ef93f86)
+		Size: 149217
+	CIwGxFont (0xa68776be)
+		"segoa6" (0x1b7e4fea)
+		Size: 67169
+	ResList 'CIwGxFont' pos:36 size:364853
+
+ResGroupResources: Wrote 364857 bytes to CIwResGroup "fonts"
+

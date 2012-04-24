@@ -1,0 +1,10 @@
+CIwResGroup
+{
+	name "Test"
+
+	./style/main.ui
+	./style/list.ui
+	resources.group
+	./style/stylesheet.itx
+
+}

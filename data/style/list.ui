@@ -1,0 +1,53 @@
+
+CIwUIElement
+{
+	name "Item"
+	CIwUILayoutHorizontal
+	{
+		element
+		{
+			name "Icon"
+			alignH "left"
+			alignv "middle"
+		}
+		element
+		{
+			name "Name"
+			alignH "right"
+			alignv "middle"
+		}
+
+
+	}
+	CIWUIImage
+	{
+		name "Icon"
+		sizeMin { 96 96 }
+		style <icon>
+
+	}
+
+	CIwUIButton
+	{
+		name "Name"
+		caption "Name"
+		sizeMin { 250 96 }
+		sizeMax  { 250 96 }
+		style <font_heading>
+		buttonUp <button>
+		buttonDown <button>
+		alignV "top"
+		CIwUILabel 
+		{
+			name "Desc"
+			pos  { 0 20 }
+			size  { 250 20 }
+			style <font_body>
+			sizeMin  { 250 20 }
+			sizeMax  { 250 20 }
+			caption "Desc"
+			alignV "top"
+			alignH "centre"
+		}
+	}
+}

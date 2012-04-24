@@ -1,0 +1,66 @@
+CIwUIElement 
+{
+	name "Main"
+	CIwUIImage 
+	{
+		name "background"
+		style <background>
+		sizeMin  { 320 480 }
+	}
+	CIwUILayoutVertical 
+	{
+		name ""
+		sizeToSpace true
+		element 
+		{
+			name "Label"
+		}
+		element 
+		{
+			name "List"
+		}
+	}
+	CIwUILabel 
+	{
+		name "Label"
+		style <font_heading>
+		sizeMin  { 0 30 }
+		caption "Honda Database"
+		alignV "middle"
+		CIwUIButton 
+		{
+			name "Options"
+			pos  { 2 0 }
+			size  { 60 30 }
+			style <font_heading>
+			sizeMin  { 60 30 }
+			sizeMax  { 60 30 }
+			caption "Options"
+			buttonUp <button>
+			buttonDown <button>
+		}
+		CIwUIButton 
+		{
+			name "Back"
+			pos  { 255 0 }
+			size  { 60 30 }
+			style <font_heading>
+			sizeMin  { 60 30 }
+			sizeMax  { 60 30 }
+			caption "Back"
+			buttonUp <button>
+			buttonDown <button>
+		}
+	}
+	CIwUIScrollableView 
+	{
+		name "List"
+		sizeMax  { -1 -1 }
+		updatable true
+		scrollToFocus true
+		CIwUILayoutVertical 
+		{
+			name ""
+		}
+	}
+}

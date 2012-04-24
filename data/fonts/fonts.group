@@ -1,0 +1,10 @@
+CIwResGroup
+{
+	name	fonts
+
+	./font_tiny.gxfont
+	./font_small.gxfont
+	./font_medium.gxfont
+	./font_large.gxfont
+	./segoa6.gxfont
+}

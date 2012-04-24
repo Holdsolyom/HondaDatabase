@@ -1,0 +1,28 @@
+packages 
+{
+	sqlite
+}
+files
+{
+	(src)
+	Test.h
+	Test.cpp
+	[Data]
+	(data)
+	Test.group
+}
+
+subproject
+{
+	iwui
+	sqlite
+}
+
+assets
+{
+
+(data)
+	honda.db
+
+
+}

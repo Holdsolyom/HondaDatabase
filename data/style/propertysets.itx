@@ -1,0 +1,55 @@
+CIwUIPropertySet 
+{
+	name "<font_title>"
+
+	sizeToContent false
+	font "font_large"
+	textColour { 255 255 255 255 }
+	alignH "centre"
+	alignV "middle"
+	margin  { 0 0 }
+
+
+}
+CIwUIPropertySet 
+{
+	name "<font_heading>"
+
+	sizeToContent false
+	font "font_medium"
+	textColour { 255 255 255 255 }
+	alignH "centre"
+	alignV "middle"
+	margin  { 0 0 }
+}
+CIwUIPropertySet 
+{
+	name "<font_body>"
+	sizeToContent false
+	font "font_tiny"
+	textColour {255 255 255 255 }
+	alignH "centre"
+	alignV "middle"
+	margin  { 0 0 }
+
+}
+CIwUIPropertySet 
+{
+	name "<button>"
+	drawableType "border"
+	texture "button"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<icon>"
+	drawableType "border"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<background>"
+	drawableType "border"
+	texture "background"
+	border  { 1 1 }
+}

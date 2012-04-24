@@ -1,0 +1,7 @@
+CIwResGroup
+{
+	name	resources
+
+	./fonts/fonts.group
+	./textures/textures.group
+}

@@ -1,0 +1,14 @@
+[S3E]
+MemSize=10485760			# 10 Mb
+MemSizeDebugDevice=10485760	# 10  Mb
+MemSizeDebug=20971520		# 20 Mb
+MemMgrMaxAllocWarning=0
+
+
+[GX]
+DataCacheSize=1000000
+PolyBufferSize=200000
+VertCacheSize=20000
+DisplayFramerate=0
+NumTPages=128
+UseRgbLighting=1
