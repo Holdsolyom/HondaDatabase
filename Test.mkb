@@ -20,9 +20,52 @@ subproject
 
 assets
 {
-
 (data)
 	honda.db
+	textures/a20.png
+	textures/b16.png
+	textures/background.tga
+	textures/bearing.png
+	textures/button.tga
+	textures/c_v6.png
+	textures/cel.png
+	textures/d16.png
+	textures/dialog_back.png
+	textures/ecupinout.png
+	textures/f22.png
+	textures/facebook.png
+	textures/g25.png
+	textures/h22.png
+	textures/hondaecu.png
+	textures/j32.png
+	textures/k20.png
+	textures/l13.png
+	textures/n22.png
+	textures/quit.png
+	textures/trans.png
+	textures/weight.png
+(data-ram/data-gles1)
+	resources.group.bin
+	test.group.bin
+	fonts/fonts.group.bin
+	textures/textures.group.bin
+}
 
+deployments
+{
+    ["iPhone"]
+    name='Honda Database'
+    caption='Honda Database'
+    manufacturer='Peter Linszter'
+    provider='Peter Linszter'
+    version-major=1
+    version-minor=0
 
+    iphone-appid='com.linszter.hondadatabase'
+}
+#### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####
+deployments
+{
+	["Default"]
+	["iPhone"]
 }
