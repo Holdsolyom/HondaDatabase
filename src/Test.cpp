@@ -184,7 +184,7 @@ void Test::Populate()
 		} else
 		if (currentmenu=="EngineData")
 		{
-			if ((atoi(listindex[row].c_str())==selectedItemIndex) || (atoi(listindex_[row].c_str())==EngineList_ItemIndex))
+			if ((atoi(listindex[row].c_str())==selectedItemIndex) && (atoi(listindex_[row].c_str())==EngineList_ItemIndex))
 			{
 			char row_s[5];
 			sprintf(row_s,"%d",row);
@@ -243,7 +243,10 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 				{
 					test->currentmenu=test->nextmenu[x+1];
 					test->selectedItemIndex=x;
-					if (test->currentmenu=="EngineList")test->EngineList_ItemIndex=x; 
+					if (test->currentmenu=="EngineList")test->EngineList_ItemIndex=x;
+					char s[10];
+					sprintf(s,"%d",x);
+					s3eDebugOutputString(s);
 				}
 			}
 			if ((CIwUIButton*)pEvent->GetSender()==test->pBack)
