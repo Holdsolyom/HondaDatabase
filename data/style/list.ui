@@ -16,35 +16,33 @@ CIwUIElement
 			alignH "right"
 			alignv "middle"
 		}
-
-
 	}
-	CIWUIImage
-	{
-		name "Icon"
-		sizeMin { 96 96 }
-		style <icon>
-
-	}
-
 	CIwUIButton
 	{
 		name "Name"
 		caption "Name"
-		sizeMin { 250 96 }
-		sizeMax  { 250 96 }
+		sizeMin { 315 50 }
+		sizeMax  { 315 50 }
 		style <font_heading>
 		buttonUp <button>
 		buttonDown <button>
 		alignV "top"
+		CIWUIImage
+		{
+			name "Icon"
+			pos  { 5 0 }
+			sizeMin { 48 48 }
+			sizeMax { 48 48 }
+			style <icon>
+		}
 		CIwUILabel 
 		{
 			name "Desc"
-			pos  { 0 20 }
-			size  { 250 20 }
+			pos  { 0 30 }
+			size  { 315 20 }
 			style <font_body>
-			sizeMin  { 250 20 }
-			sizeMax  { 250 20 }
+			sizeMin  { 315 20 }
+			sizeMax  { 315 20 }
 			caption "Desc"
 			alignV "top"
 			alignH "centre"
