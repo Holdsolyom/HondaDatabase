@@ -32,17 +32,12 @@ void Test::Init()
 	pMainuiClone->AddEventHandler(handler);
 	pItemTemplate = (CIwUIElement*)IwGetResManager()->GetResNamed("Item", "CIwUIElement");
 
-	pAlertDialog=new CIwUIAlertDialog;
-	pAlertDialog->AddEventHandler(handler);
-	pAlertDialog->SetLabelStyle("<font_title>");
-	pAlertDialog->SetLabelCaption("Do You Want To Quit?");
-	pAlertDialog->SetButtonStyle(0,"<font_title>");
-	pAlertDialog->SetButtonCaption(0,"OK");
-	pAlertDialog->SetButtonStyle(1,"<font_title>");
-	pAlertDialog->SetButtonCaption(1,"Cancel");
-	pAlertDialog->SetVisible(false);
+	pQuit=(CIwUIElement*)IwGetResManager()->GetResNamed("Quit", "CIwUIElement");
+	pAlertDialog=(CIwUIAlertDialog*)pQuit->GetChildNamed("AlertDialog");
+	pQuit->SetVisible(false);
+	pQuit->AddEventHandler(handler);
 	IwGetUIView()->AddElementToLayout(pMainuiClone);
-	IwGetUIView()->AddElementToLayout(pAlertDialog);
+	IwGetUIView()->AddElementToLayout(pQuit);
 	sqlite3_initialize();
 	sqlite3_open("honda.db",&db);
 
@@ -80,9 +75,6 @@ void Test::Terminate()
 	delete pTextures;
 	pItemList->clear();
     delete pItemList;
-
-	IwGetUIView()->RemoveElement(pAlertDialog);
-	delete pAlertDialog;
 	sqlite3_close(db);
 
 	delete IwGetUIController();
@@ -218,8 +210,8 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 				{
 					if (test->currentmenu=="MainMenu")
 					{
-						test->pAlertDialog->SetVisible(true);
-						IwGetUIView()->SetModal(test->pAlertDialog);
+						test->pQuit->SetVisible(true);
+						IwGetUIView()->SetModal(test->pQuit);
 						return true;
 					}
 					else
@@ -240,7 +232,7 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 			else
 			{
 				IwGetUIView()->SetModal(NULL);
-				test->pAlertDialog->SetVisible(false);
+				test->pQuit->SetVisible(false);
 			}
 		}
 	return false;

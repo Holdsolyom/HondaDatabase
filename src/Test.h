@@ -39,6 +39,7 @@ public:
 	CIwString<IW_STRING_LEN_S> currentmenu;
 	CIwString<IW_STRING_LEN_S> previousmenu[50];
 	CIwString<IW_STRING_LEN_S> nextmenu[50];
+	CIwUIElement* pQuit;
 	CIwUIButton* pBack;
 	CIwUIButton* pOptions;
 	CIwUIAlertDialog* pAlertDialog;

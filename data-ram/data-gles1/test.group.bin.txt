@@ -25,23 +25,29 @@ ResGroupResources:
 		Size: 746
 	CIwUIElement (0x6097ed50)
 		"Item" (0x7c989e34)
-		CIwUIImage (0x8a5d37c9)
-			"Icon" (0x7c98572e)
-			Size: 75
 		CIwUIButton (0xc64b7cc2)
 			"Name" (0x7c9b0c46)
+			CIwUIImage (0x8a5d37c9)
+				"Icon" (0x7c98572e)
+				Size: 91
 			CIwUILabel (0x8a8cf0c6)
 				"Desc" (0x7c95a244)
 				Size: 132
-			Size: 278
+			Size: 369
 		CIwUILayoutHorizontal::Item (0x6b1ae731)
 			"Icon" (0x7c98572e)
 			Size: 55
 		CIwUILayoutHorizontal::Item (0x6b1ae731)
 			"Name" (0x7c9b0c46)
 			Size: 55
-		Size: 549
-	ResList 'CIwUIElement' pos:73 size:1305
+		Size: 565
+	CIwUIElement (0x6097ed50)
+		"Quit" (0x7c9d0608)
+		CIwUIAlertDialog (0x8d0a5f0e)
+			"AlertDialog" (0x24b38f2d)
+			Size: 224
+		Size: 283
+	ResList 'CIwUIElement' pos:73 size:1604
 
 	CIwUIStylesheet (0xb4502910)
 		"iwui" (0x7c98ad03)
@@ -64,7 +70,7 @@ ResGroupResources:
 			"<background>" (0x3d83e7bf)
 			Size: 59
 		Size: 457
-	ResList 'CIwUIStylesheet' pos:1378 size:467
+	ResList 'CIwUIStylesheet' pos:1677 size:467
 
-ResGroupResources: Wrote 1776 bytes to CIwResGroup "Test"
+ResGroupResources: Wrote 2075 bytes to CIwResGroup "Test"
 
