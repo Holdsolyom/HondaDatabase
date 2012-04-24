@@ -35,10 +35,15 @@ public:
 	void Refresh();
 	CIwList<CIwUIElement*>* pItemList;
 	CIwList<CIwTexture*>* pTextures;
-	int ItemNum;
+	int RowNum;
+	int selectedItemIndex;
+	int EngineList_ItemIndex;
 	CIwString<IW_STRING_LEN_S> currentmenu;
-	CIwString<IW_STRING_LEN_S> previousmenu[50];
-	CIwString<IW_STRING_LEN_S> nextmenu[50];
+	CIwString<IW_STRING_LEN_S> previousmenu[500];
+	CIwString<IW_STRING_LEN_S> nextmenu[500];
+	CIwString<IW_STRING_LEN_S> listindex[500];
+	CIwString<IW_STRING_LEN_S> listindex_[500];
+	CIwString<IW_STRING_LEN_S> sqlite_error;
 	CIwUIElement* pQuit;
 	CIwUIButton* pBack;
 	CIwUIButton* pOptions;

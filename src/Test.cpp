@@ -50,7 +50,6 @@ void Test::Update()
 {
 	if (ButtonEvent==true)
 	{
-		s3eDebugOutputString(currentmenu.c_str());
 		DePopulate();
 		Refresh();
 		Populate();
@@ -136,7 +135,7 @@ void Test::Query(const char* field,const char* tablename,const char* column,cons
 	sqlite3_exec(db,qr,sql_callback,NULL,&error);
 	if (error!=NULL)
 	{
-	s3eDebugOutputString(error);
+	sqlite_error=error;
 	sqlite3_free(error);
 	}
 	delete error;
@@ -146,22 +145,33 @@ void Test::Refresh()
 	char query[50];
 	sprintf(query,"SELECT COUNT(*) FROM %s",currentmenu.c_str());
 	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	ItemNum=atoi(result.c_str());
-	for (int x=1;x<=ItemNum;x++)
+	RowNum=atoi(result.c_str());
+	for (int x=1;x<=RowNum;x++)
 	{
 	sprintf(query,"SELECT Return FROM %s where _id=%d",currentmenu.c_str(),x);
 	sqlite3_exec(db,query,sql_callback,NULL,NULL);
 	previousmenu[x]=result.c_str();
+
 	sprintf(query,"SELECT Link FROM %s where _id=%d",currentmenu.c_str(),x);
 	sqlite3_exec(db,query,sql_callback,NULL,NULL);
 	nextmenu[x]=result.c_str();
+	
+	sprintf(query,"SELECT Listindex FROM %s where _id=%d",currentmenu.c_str(),x);
+	sqlite3_exec(db,query,sql_callback,NULL,NULL);
+	listindex[x]=result.c_str();
+
+	sprintf(query,"SELECT Listindex2 FROM %s where _id=%d",currentmenu.c_str(),x);
+	sqlite3_exec(db,query,sql_callback,NULL,NULL);
+	listindex_[x]=result.c_str();
 	}
 }
 void Test::Populate()
 {
 	int row=1;
-	while (row<=ItemNum)
+	while (row<=RowNum)
 	{
+		if (listindex[row]=="-1")
+		{
 		char row_s[5];
 		sprintf(row_s,"%d",row);
 		Query("Text",currentmenu.c_str(),"_id",row_s);
@@ -171,6 +181,34 @@ void Test::Populate()
 		Query("Icon",currentmenu.c_str(),"_id",row_s);
 		CIwString<64> iconname=result;
 		AddListItem(row,iconname.c_str(),name.c_str(),desc.c_str());
+		} else
+		if (currentmenu=="EngineData")
+		{
+			if ((atoi(listindex[row].c_str())==selectedItemIndex) || (atoi(listindex_[row].c_str())==EngineList_ItemIndex))
+			{
+			char row_s[5];
+			sprintf(row_s,"%d",row);
+			Query("Text",currentmenu.c_str(),"_id",row_s);
+			CIwString<64> name=result;
+			Query("Desc",currentmenu.c_str(),"_id",row_s);
+			CIwString<64> desc=result;
+			Query("Icon",currentmenu.c_str(),"_id",row_s);
+			CIwString<64> iconname=result;
+			AddListItem(row,iconname.c_str(),name.c_str(),desc.c_str());
+			}
+		} else
+		if (atoi(listindex[row].c_str())==selectedItemIndex)
+		{
+			char row_s[5];
+			sprintf(row_s,"%d",row);
+			Query("Text",currentmenu.c_str(),"_id",row_s);
+			CIwString<64> name=result;
+			Query("Desc",currentmenu.c_str(),"_id",row_s);
+			CIwString<64> desc=result;
+			Query("Icon",currentmenu.c_str(),"_id",row_s);
+			CIwString<64> iconname=result;
+			AddListItem(row,iconname.c_str(),name.c_str(),desc.c_str());
+		}
 		row++;
 	}
 
@@ -197,13 +235,15 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 		{
 			CIwString<IW_STRING_LEN_S> selected;
 			CIwUIElement* item=(CIwUIElement*)(((CIwUIButton*)pEvent->GetSender())->GetParent());
-			for (int x=0;x<test->ItemNum;x++)
+			for (int x=0;x<test->pItemList->size();x++)
 			{
 
 				CIwUIElement* elem=(CIwUIElement*)test->pItemList->element_at(x);
 				if (item==elem)
 				{
 					test->currentmenu=test->nextmenu[x+1];
+					test->selectedItemIndex=x;
+					if (test->currentmenu=="EngineList")test->EngineList_ItemIndex=x; 
 				}
 			}
 			if ((CIwUIButton*)pEvent->GetSender()==test->pBack)
@@ -222,6 +262,8 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 
 			Test::ButtonEvent=true;
 		}
+
+
 		if (pEvent->GetID() == IWUI_EVENT_ALERT_DIALOG_BUTTON)
 		{
 			CIwUIEventAlertDialogButton* pEventButton = IwSafeCast<CIwUIEventAlertDialogButton*>(pEvent);
