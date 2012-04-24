@@ -8,7 +8,10 @@ ResGroupResources:
 	CIwTexture (0x3521f539)
 		"quit" (0x7c9d0608)
 		Size: 262176
-	ResList 'CIwTexture' pos:39 size:557034
+	CIwTexture (0x3521f539)
+		"dialog_back" (0xd294eb65)
+		Size: 135032
+	ResList 'CIwTexture' pos:39 size:692066
 
-ResGroupResources: Wrote 557038 bytes to CIwResGroup "textures"
+ResGroupResources: Wrote 692070 bytes to CIwResGroup "textures"
 

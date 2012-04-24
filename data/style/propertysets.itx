@@ -8,8 +8,6 @@ CIwUIPropertySet
 	alignH "centre"
 	alignV "middle"
 	margin  { 0 0 }
-
-
 }
 CIwUIPropertySet 
 {
@@ -51,5 +49,12 @@ CIwUIPropertySet
 	name "<background>"
 	drawableType "border"
 	texture "background"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<dialog_back>"
+	drawableType "border"
+	texture "dialog_back"
 	border  { 1 1 }
 }

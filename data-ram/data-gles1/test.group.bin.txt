@@ -45,9 +45,9 @@ ResGroupResources:
 		"Quit" (0x7c9d0608)
 		CIwUIAlertDialog (0x8d0a5f0e)
 			"AlertDialog" (0x24b38f2d)
-			Size: 224
-		Size: 283
-	ResList 'CIwUIElement' pos:73 size:1604
+			Size: 289
+		Size: 348
+	ResList 'CIwUIElement' pos:73 size:1669
 
 	CIwUIStylesheet (0xb4502910)
 		"iwui" (0x7c98ad03)
@@ -69,8 +69,11 @@ ResGroupResources:
 		CIwUIPropertySet (0xc8e42197)
 			"<background>" (0x3d83e7bf)
 			Size: 59
-		Size: 457
-	ResList 'CIwUIStylesheet' pos:1677 size:467
+		CIwUIPropertySet (0xc8e42197)
+			"<dialog_back>" (0xd3d1231f)
+			Size: 59
+		Size: 516
+	ResList 'CIwUIStylesheet' pos:1742 size:526
 
-ResGroupResources: Wrote 2075 bytes to CIwResGroup "Test"
+ResGroupResources: Wrote 2199 bytes to CIwResGroup "Test"
 

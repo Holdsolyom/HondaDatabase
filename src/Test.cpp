@@ -253,12 +253,14 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 				{
 					if (test->currentmenu=="MainMenu")
 					{
+						
 						test->pQuit->SetVisible(true);
 						IwGetUIView()->SetModal(test->pQuit);
 						return true;
 					}
 					else
 					{
+					test->selectedItemIndex=test->EngineList_ItemIndex;
 					test->currentmenu=test->previousmenu[1];
 					}
 				}
