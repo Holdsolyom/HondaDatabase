@@ -1,0 +1,44 @@
+CIwUIElement 
+{
+	name "Quit"
+	pos  { 0 0 }
+	size  { 0 0 }
+	CIwUIAlertDialog 
+	{
+		name "AlertDialog"
+		pos  { 10 165 }
+		size  { 300 100 }
+		sizeToContent false
+		labelStyle 
+		{
+			name ""
+			parent <font_heading>
+//: 		extraclass "CIwUILabel"
+			offset  { 0 5 }
+			caption "Do You Want To Quit?"
+		}
+		buttonStyles {
+			
+			{
+				name ""
+				parent <font_heading>
+//: 			extraclass "CIwUIButton"
+				offset  { 0 20 }
+				caption "YES"
+			}
+			 
+			{
+				name ""
+				parent <font_heading>
+//: 			extraclass "CIwUIButton"
+				offset  { 0 30 }
+				caption "NO"
+			}
+		}
+		background <dialog_back>
+		CIwUIFocusHandlerTab 
+		{
+			name ""
+		}
+	}
+}
