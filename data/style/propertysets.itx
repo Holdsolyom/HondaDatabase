@@ -58,3 +58,17 @@ CIwUIPropertySet
 	texture "dialog_back"
 	border  { 1 1 }
 }
+CIwUIPropertySet 
+{
+	name "<header_back>"
+	drawableType "border"
+	texture "header_back"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<2button_back>"
+	drawableType "border"
+	texture "2button_back"
+	border  { 1 1 }
+}

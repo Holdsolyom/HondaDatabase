@@ -5,11 +5,15 @@ CIwResGroup
 	name textures
 
 
-	./background.tga
+	./background.png
 	
 	./button.tga
 
 	./quit.png
 
 	./dialog_back.png
+	
+	./header_back.png
+	
+	./2button_back.png
 }

@@ -1,11 +1,64 @@
 CIwUIElement 
 {
 	name "Main"
+	pos  { 0 0 }
+	size  { 320 480 }
 	CIwUIImage 
 	{
 		name "background"
+		pos  { 0 0 }
+		size  { 320 480 }
 		style <background>
 		sizeMin  { 320 480 }
+	}
+	CIwUILabel 
+	{
+		name "Label"
+		pos  { 0 0 }
+		size  { 320 50 }
+		style <font_heading>
+		sizeMin  { 0 50 }
+		caption "Honda Database"
+		alignV "middle"
+		background  <header_back>
+		CIwUIButton 
+		{
+			name "Options"
+			pos  { 250 10 }
+			size  { 60 30 }
+			style <font_heading>
+			sizeMin  { 60 30 }
+			sizeMax  { 60 30 }
+			caption "Options"
+			buttonUp <2button_back>
+			buttonDown <button>
+		}
+		CIwUIButton 
+		{
+			name "Back"
+			pos  { 10 10 }
+			size  { 60 30 }
+			style <font_heading>
+			sizeMin  { 60 30 }
+			sizeMax  { 60 30 }
+			caption "Back"
+			buttonUp <2button_back>
+			buttonDown <button>
+		}
+	}
+	CIwUIScrollableView 
+	{
+		name "List"
+		pos  { 0 50 }
+		size  { 320 0 }
+		sizeMax  { -1 -1 }
+		updatable true
+		clipped true
+		scrollToFocus true
+		CIwUILayoutVertical 
+		{
+			name ""
+		}
 	}
 	CIwUILayoutVertical 
 	{
@@ -18,49 +71,6 @@ CIwUIElement
 		element 
 		{
 			name "List"
-		}
-	}
-	CIwUILabel 
-	{
-		name "Label"
-		style <font_heading>
-		sizeMin  { 0 30 }
-		caption "Honda Database"
-		alignV "middle"
-		CIwUIButton 
-		{
-			name "Options"
-			pos  { 2 0 }
-			size  { 60 30 }
-			style <font_heading>
-			sizeMin  { 60 30 }
-			sizeMax  { 60 30 }
-			caption "Options"
-			buttonUp <button>
-			buttonDown <button>
-		}
-		CIwUIButton 
-		{
-			name "Back"
-			pos  { 255 0 }
-			size  { 60 30 }
-			style <font_heading>
-			sizeMin  { 60 30 }
-			sizeMax  { 60 30 }
-			caption "Back"
-			buttonUp <button>
-			buttonDown <button>
-		}
-	}
-	CIwUIScrollableView 
-	{
-		name "List"
-		sizeMax  { -1 -1 }
-		updatable true
-		scrollToFocus true
-		CIwUILayoutVertical 
-		{
-			name ""
 		}
 	}
 }

@@ -21,8 +21,8 @@ CIwUIElement
 	{
 		name "Name"
 		caption "Name"
-		sizeMin { 315 50 }
-		sizeMax  { 315 50 }
+		sizeMin { 320 50 }
+		sizeMax  { 320 50 }
 		style <font_heading>
 		buttonUp <button>
 		buttonDown <button>
@@ -39,10 +39,10 @@ CIwUIElement
 		{
 			name "Desc"
 			pos  { 0 30 }
-			size  { 315 20 }
+			size  { 320 20 }
 			style <font_body>
-			sizeMin  { 315 20 }
-			sizeMax  { 315 20 }
+			sizeMin  { 320 20 }
+			sizeMax  { 320 20 }
 			caption "Desc"
 			alignV "top"
 			alignH "centre"
