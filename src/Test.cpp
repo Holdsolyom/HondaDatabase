@@ -16,6 +16,7 @@ void Test::Init()
 
 	new CIwUIController;
 	new CIwUIView;
+
 	pItemList=new CIwList<CIwUIElement*>();
 	pTextures=new CIwList<CIwTexture*>();
 	IwGetResManager()->LoadGroup("Test.group");
