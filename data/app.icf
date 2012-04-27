@@ -1,9 +1,9 @@
 [S3E]
-MemSize=10485760			# 10 Mb
-MemSizeDebugDevice=10485760	# 10  Mb
-MemSizeDebug=20971520		# 20 Mb
+MemSize=5485760			# 5 Mb
+MemSizeDebugDevice=5485760	# 5  Mb
+MemSizeDebug=5971520		# 5 Mb
 MemMgrMaxAllocWarning=0
-
+DispFixRot="FixedPortrait"
 
 [GX]
 DataCacheSize=1000000

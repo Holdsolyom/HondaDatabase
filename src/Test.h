@@ -6,7 +6,21 @@
 #include "IwGx.h"
 #include "IwUI.h"
 #include "cstdlib"
-//main class
+
+class Menu
+{
+public:
+	CIwString<32> name;
+	CIwString<32> text[500];
+	CIwString<80> description[500];
+	CIwString<32> icon[500];
+	CIwString<32> previousmenu[500];
+	CIwString<32> nextmenu[500];
+	CIwString<32> listindex[500];
+	CIwString<32> listindex2[500];
+	int RowNum;
+};
+
 class ClickHandler : public CIwUIElementEventHandler
 {
 public:
@@ -29,27 +43,29 @@ public:
 	void Terminate();
 	void AddListItem(int ItemId ,const char* iconname,const char* name,const char* desc);
 	void DeleteListItem();
-	void Query(const char* field,const char* tablename,const char* column,const char* data);
 	void Populate();
 	void DePopulate();
-	void Refresh();
+	void LoadDatabase();
+	void InitUI();
 	CIwList<CIwUIElement*>* pItemList;
 	CIwList<CIwTexture*>* pTextures;
-	int RowNum;
 	int selectedItemIndex;
-	int EngineList_ItemIndex;
-	CIwString<IW_STRING_LEN_S> currentmenu;
-	CIwString<IW_STRING_LEN_S> previousmenu[500];
-	CIwString<IW_STRING_LEN_S> nextmenu[500];
-	CIwString<IW_STRING_LEN_S> listindex[500];
-	CIwString<IW_STRING_LEN_S> listindex_[500];
-	CIwString<IW_STRING_LEN_S> sqlite_error;
+	int CategoryIndex;
+	Menu* currentmenu;
+	Menu* MainMenu;
+	Menu* EngineList;
+	Menu* EngineSeries;
+	Menu* EngineData;
+	Menu* EcuCodes;
+	Menu* OBD1List;
+	Menu* OBD2List;
 	CIwUIElement* pQuit;
 	CIwUIButton* pBack;
 	CIwUIButton* pOptions;
 	CIwUIAlertDialog* pAlertDialog;
 	static bool ButtonEvent;
 	sqlite3* db;
+
 private:
 	
 	CIwUIElement* pList;
@@ -67,5 +83,4 @@ private:
 
 int main();
 int sql_callback(void* none,int argc,char** argv,char** col);
-CIwString<64> result;
-int result_num;
+CIwString<1000> result[40];
