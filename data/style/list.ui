@@ -21,11 +21,12 @@ CIwUIElement
 	{
 		name "Name"
 		caption "Name"
-		sizeMin { 320 50 }
-		sizeMax  { 320 50 }
-		style <font_heading>
-		buttonUp <button>
-		buttonDown <button>
+		sizeMin { 320 44 }
+		sizeMax  { 320 44 }
+		style <font_name>
+		textColour { 0 0 0 255 }
+		buttonUp <list_back1>
+		buttonDown <list_back2>
 		alignV "top"
 		CIWUIImage
 		{
@@ -38,9 +39,10 @@ CIwUIElement
 		CIwUILabel 
 		{
 			name "Desc"
-			pos  { 0 30 }
+			pos  { 0 25 }
 			size  { 320 20 }
-			style <font_body>
+			style <font_description>
+			textColour { 0 0 0 255 }
 			sizeMin  { 320 20 }
 			sizeMax  { 320 20 }
 			caption "Desc"

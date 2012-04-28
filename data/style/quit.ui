@@ -6,33 +6,38 @@ CIwUIElement
 	CIwUIAlertDialog 
 	{
 		name "AlertDialog"
-		pos  { 10 165 }
-		size  { 300 100 }
+		pos  { 20 165 }
+		size  { 278 161 }
 		sizeToContent false
 		labelStyle 
 		{
 			name ""
-			parent <font_heading>
-//: 		extraclass "CIwUILabel"
-			offset  { 0 5 }
+			parent <font_title>
+			offset  { 0 20 }
 			caption "Do You Want To Quit?"
 		}
 		buttonStyles {
 			
 			{
 				name ""
-				parent <font_heading>
-//: 			extraclass "CIwUIButton"
-				offset  { 0 20 }
+				parent <font_title>
+				offset  { -65 90 }
+				sizeMin  { 125 40 }
+				sizeMax  { 125 40 }
 				caption "YES"
+				buttonUp <dialog_button1>
+				buttonDown <dialog_button2>
 			}
 			 
 			{
 				name ""
-				parent <font_heading>
-//: 			extraclass "CIwUIButton"
-				offset  { 0 30 }
+				parent <font_title>
+				offset  { 65 50 }
+				sizeMin  { 125 40 }
+				sizeMax  { 125 40 }
 				caption "NO"
+				buttonUp <dialog_button1>
+				buttonDown <dialog_button2>
 			}
 		}
 		background <dialog_back>

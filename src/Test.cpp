@@ -28,7 +28,6 @@ void Test::InitUI()
 	IwGetResManager()->LoadGroup("Test.group");
 	CIwResource* pResource = IwGetResManager()->GetResNamed("iwui", IW_UI_RESTYPE_STYLESHEET);
     IwGetUIStyleManager()->SetStylesheet(IwSafeCast<CIwUIStylesheet*>(pResource));
-
 	CIwUIElement* pMainui = (CIwUIElement*)IwGetResManager()->GetResNamed("Main", "CIwUIElement");
 	CIwUIElement* pMainuiClone=pMainui->Clone();
 	pList = pMainuiClone->GetChildNamed("List");
@@ -69,7 +68,6 @@ void Test::Render()
 }
 void Test::Terminate()
 {
-	sqlite3_close(db);
 	DePopulate();
 	pTextures->clear();
 	delete pTextures;
@@ -79,7 +77,12 @@ void Test::Terminate()
 	delete EngineList;
 	delete EngineSeries;
 	delete EngineData;
-	
+	delete EcuCodes;
+	delete OBD1List;
+	delete OBD2List;
+	delete Transmissions;
+	delete TransData;
+	delete CWList;
 	delete IwGetUIController();
     delete IwGetUIView();
 
@@ -101,134 +104,68 @@ void Test::LoadDatabase()
 {
 
 	sqlite3_initialize();
-	MainMenu=new Menu();
-	EngineList=new Menu();
-	EngineSeries=new Menu();
-	EngineData=new Menu();
-	EcuCodes=new Menu();
-	OBD1List=new Menu();
-	OBD2List=new Menu();
+	MainMenu=new Menu(10);
+	map["MainMenu"] =MainMenu;
+	EngineList=new Menu(20);
+	map["EngineList"] =EngineList;
+	EngineSeries=new Menu(50);
+	map["EngineSeries"] =EngineSeries;
+	EngineData=new Menu(500);
+	map["EngineData"] =EngineData;
+	EcuCodes=new Menu(20);
+	map["EcuCodes"] =EcuCodes;
+	OBD1List=new Menu(50);
+	map["OBD1List"] =OBD1List;
+	OBD2List=new Menu(50);
+	map["OBD2List"] =OBD2List;
+	Transmissions=new Menu(10);
+	map["Transmissions"] =Transmissions;
+	TransData=new Menu(120);
+	map["TransData"] =TransData;
+	CWList=new Menu(200);
+	map["CWList"] =CWList;
 	sqlite3_open("honda.db",&db);
 
-	char query[50];
-	sprintf(query,"SELECT COUNT(*) FROM MainMenu");
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	MainMenu->name="MainMenu";
-	MainMenu->RowNum=atoi(result[0].c_str());
-	for (int x=1;x<=MainMenu->RowNum;x++)
-	{
-	sprintf(query,"SELECT * FROM MainMenu WHERE _id=%d",x);
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	MainMenu->text[x]=result[1].c_str();
-	MainMenu->description[x]=result[2].c_str();
-	MainMenu->icon[x]=result[3].c_str();
-	MainMenu->nextmenu[x]=result[4].c_str();
-	MainMenu->previousmenu[x]=result[5].c_str();
-	MainMenu->listindex[x]=result[7].c_str();
-	}
-
-	sprintf(query,"SELECT COUNT(*) FROM EngineList");
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EngineList->name="EngineList";
-	EngineList->RowNum=atoi(result[0].c_str());
-	for (int x=1;x<=EngineList->RowNum;x++)
-	{
-	sprintf(query,"SELECT * FROM EngineList WHERE _id=%d",x);
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EngineList->text[x]=result[1].c_str();
-	EngineList->description[x]=result[2].c_str();
-	EngineList->icon[x]=result[3].c_str();
-	EngineList->nextmenu[x]=result[4].c_str();
-	EngineList->previousmenu[x]=result[5].c_str();
-	EngineList->listindex[x]=result[7].c_str();
-	}
-
-	sprintf(query,"SELECT COUNT(*) FROM EngineSeries");
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EngineSeries->name="EngineSeries";
-	EngineSeries->RowNum=atoi(result[0].c_str());
-	for (int x=1;x<=EngineSeries->RowNum;x++)
-	{
-	sprintf(query,"SELECT * FROM EngineSeries WHERE _id=%d",x);
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EngineSeries->text[x]=result[1].c_str();
-	EngineSeries->description[x]=result[2].c_str();
-	EngineSeries->icon[x]=result[3].c_str();
-	EngineSeries->nextmenu[x]=result[4].c_str();
-	EngineSeries->previousmenu[x]=result[5].c_str();
-	EngineSeries->listindex[x]=result[7].c_str();
-	}
-
-	sprintf(query,"SELECT COUNT(*) FROM EngineData");
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EngineData->name="EngineData";
-	EngineData->RowNum=atoi(result[0].c_str());
-	for (int x=1;x<=EngineData->RowNum;x++)
-	{
-	sprintf(query,"SELECT * FROM EngineData WHERE _id=%d",x);
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EngineData->text[x]=result[1].c_str();
-	EngineData->description[x]=result[2].c_str();
-	EngineData->icon[x]=result[3].c_str();
-	EngineData->nextmenu[x]=result[4].c_str();
-	EngineData->previousmenu[x]=result[5].c_str();
-	EngineData->listindex[x]=result[7].c_str();
-	EngineData->listindex2[x]=result[8].c_str();
-	}
-
-	sprintf(query,"SELECT COUNT(*) FROM EcuCodes");
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EcuCodes->name="EcuCodes";
-	EcuCodes->RowNum=atoi(result[0].c_str());
-	for (int x=1;x<=EcuCodes->RowNum;x++)
-	{
-	sprintf(query,"SELECT * FROM EcuCodes WHERE _id=%d",x);
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	EcuCodes->text[x]=result[1].c_str();
-	EcuCodes->description[x]=result[2].c_str();
-	EcuCodes->icon[x]=result[3].c_str();
-	EcuCodes->nextmenu[x]=result[4].c_str();
-	EcuCodes->previousmenu[x]=result[5].c_str();
-	EcuCodes->listindex[x]=result[7].c_str();
-	}
-	
-	sprintf(query,"SELECT COUNT(*) FROM OBD1List");
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	OBD1List->name="OBD1List";
-	OBD1List->RowNum=atoi(result[0].c_str());
-	for (int x=1;x<=OBD1List->RowNum;x++)
-	{
-	sprintf(query,"SELECT * FROM OBD1List WHERE _id=%d",x);
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	OBD1List->text[x]=result[1].c_str();
-	OBD1List->description[x]=result[2].c_str();
-	OBD1List->icon[x]=result[3].c_str();
-	OBD1List->nextmenu[x]=result[4].c_str();
-	OBD1List->previousmenu[x]=result[5].c_str();
-	OBD1List->listindex[x]=result[7].c_str();
-	}
-	
-	sprintf(query,"SELECT COUNT(*) FROM OBD2List");
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	OBD2List->name="OBD2List";
-	OBD2List->RowNum=atoi(result[0].c_str());
-	for (int x=1;x<=OBD2List->RowNum;x++)
-	{
-	sprintf(query,"SELECT * FROM OBD2List WHERE _id=%d",x);
-	sqlite3_exec(db,query,sql_callback,NULL,NULL);
-	OBD2List->text[x]=result[1].c_str();
-	OBD2List->description[x]=result[2].c_str();
-	OBD2List->icon[x]=result[3].c_str();
-	OBD2List->nextmenu[x]=result[4].c_str();
-	OBD2List->previousmenu[x]=result[5].c_str();
-	OBD2List->listindex[x]=result[7].c_str();
-	}
+	LoadMenu("MainMenu");
+	LoadMenu("EngineList");
+	LoadMenu("EngineSeries");
+	LoadMenu("EngineData");
+	LoadMenu("EcuCodes");
+	LoadMenu("OBD1List");
+	LoadMenu("OBD2List");
+	LoadMenu("Transmissions");
+	LoadMenu("TransData");
+	LoadMenu("CWList");
 	sqlite3_close(db);
-	IwDebugTraceLinePrintf("%d",(IwMemBucketGetUsed(IwMemBucketGetID())));
 }
+void Test::LoadMenu(std::string name)
+{
+	
+	char query[50];
+	sprintf(query,"SELECT COUNT(*) FROM %s",name.c_str());
+	sqlite3_exec(db,query,sql_callback,NULL,NULL);
+	map[name]->name=name.c_str();
+	map[name]->RowNum=atoi(result[0].c_str());
+	for (int x=1;x<=map[name]->RowNum;x++)
+	{
+	sprintf(query,"SELECT * FROM %s WHERE _id=%d",name.c_str(),x);
+	sqlite3_exec(db,query,sql_callback,NULL,NULL);
+	map[name]->text[x]=result[1].c_str();
+	map[name]->description[x]=result[2].c_str();
+	map[name]->icon[x]=result[3].c_str();
+	map[name]->nextmenu[x]=result[4].c_str();
+	map[name]->previousmenu[x]=result[5].c_str();
+	map[name]->listindex[x]=result[7].c_str();
+	if (name=="EngineData")
+	{
+		map[name]->listindex2[x]=result[8].c_str();
+	}
+	}
 
+}
 void Test::AddListItem(int ItemId,const char* iconname,const char* name,const char* desc)
 {
+	IwDebugTraceLinePrintf("%s",name);
     CIwUIElement* pItem = pItemTemplate->Clone();
     IwSafeCast<CIwUIButton*>(pItem->GetChildNamed("Name"))->SetCaption(name);
 	IwSafeCast<CIwUILabel*>(pItem->GetChildNamed("Desc"))->SetCaption(desc);
@@ -270,14 +207,18 @@ void Test::Populate()
 		if (currentmenu->listindex[row]=="-1")
 		{
 		AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
-		} else
+		} 
+		else
 		if (currentmenu->name=="EngineData")
 		{
+			IwDebugTraceLinePrintf("itemindex=%d",selectedItemIndex);
+			IwDebugTraceLinePrintf("categoryindex=%d",CategoryIndex);
 			if ((atoi(currentmenu->listindex[row].c_str())==selectedItemIndex) && (atoi(currentmenu->listindex2[row].c_str())==CategoryIndex))
 			{
 			AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
 			}
-		} else
+		} 
+		else
 		if (atoi(currentmenu->listindex[row].c_str())==selectedItemIndex)
 		{
 			AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
@@ -316,13 +257,7 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 				if (item==elem)
 				{
 					CIwString<32> nextmenu=test->currentmenu->nextmenu[x+1];
-					if (nextmenu=="MainMenu"){test->currentmenu=test->MainMenu;}
-					else if (nextmenu=="EngineList"){test->currentmenu=test->EngineList;}
-					else if (nextmenu=="EngineSeries"){test->currentmenu=test->EngineSeries;}
-					else if (nextmenu=="EngineData"){test->currentmenu=test->EngineData;}
-					else if (nextmenu=="EcuCodes"){test->currentmenu=test->EcuCodes;}
-					else if (nextmenu=="OBD1List"){test->currentmenu=test->OBD1List;}
-					else if (nextmenu=="OBD2List"){test->currentmenu=test->OBD2List;}
+					test->currentmenu=test->map[nextmenu.c_str()];
 					test->selectedItemIndex=x;
 					if (test->currentmenu->name=="EngineSeries")
 					{
@@ -344,13 +279,7 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 					{
 						test->selectedItemIndex=test->CategoryIndex;
 						CIwString<32> previousmenu=test->currentmenu->previousmenu[1];
-						if (previousmenu=="MainMenu"){test->currentmenu=test->MainMenu;}
-						else if (previousmenu=="EngineList"){test->currentmenu=test->EngineList;}
-						else if (previousmenu=="EngineSeries"){test->currentmenu=test->EngineSeries;}
-						else if (previousmenu=="EngineData"){test->currentmenu=test->EngineData;}
-						else if (previousmenu=="EcuCodes"){test->currentmenu=test->EcuCodes;}
-						else if (previousmenu=="OBD1List"){test->currentmenu=test->OBD1List;}
-						else if (previousmenu=="OBD2List"){test->currentmenu=test->OBD2List;}
+						test->currentmenu=test->map[previousmenu.c_str()];
 					}
 			}
 

@@ -1,3 +1,4 @@
+
 CIwUIElement 
 {
 	name "Main"
@@ -15,35 +16,35 @@ CIwUIElement
 	{
 		name "Label"
 		pos  { 0 0 }
-		size  { 320 50 }
-		style <font_heading>
-		sizeMin  { 0 50 }
+		size  { 320 44 }
+		style <font_title>
+		sizeMin  { 0 44 }
 		caption "Honda Database"
 		alignV "middle"
 		background  <header_back>
 		CIwUIButton 
 		{
 			name "Options"
-			pos  { 250 10 }
-			size  { 60 30 }
-			style <font_heading>
-			sizeMin  { 60 30 }
-			sizeMax  { 60 30 }
+			pos  { 250 7 }
+			size  { 85 30 }
+			style <font_name>
+			sizeMin  { 85 30 }
+			sizeMax  { 85 30 }
 			caption "Options"
-			buttonUp <2button_back>
-			buttonDown <button>
+			buttonUp <back_button1>
+			buttonDown <back_button2>
 		}
 		CIwUIButton 
 		{
 			name "Back"
-			pos  { 10 10 }
-			size  { 60 30 }
-			style <font_heading>
-			sizeMin  { 60 30 }
-			sizeMax  { 60 30 }
+			pos  { 7 7 }
+			size  { 85 30 }
+			style <font_name>
+			sizeMin  { 85 30 }
+			sizeMax  { 85 30 }
 			caption "Back"
-			buttonUp <2button_back>
-			buttonDown <button>
+			buttonUp <back_button1>
+			buttonDown <back_button2>
 		}
 	}
 	CIwUIScrollableView 
@@ -73,4 +74,22 @@ CIwUIElement
 			name "List"
 		}
 	}
+}
+CIwGxFont
+{
+	name "gxfont_large"
+	ttf "./fonts/coolvetica.ttf"
+	ttfPointSize 10	
+}
+CIwGxFont
+{
+	name "gxfont_medium"
+	ttf "./fonts/coolvetica.ttf"
+	ttfPointSize 8	
+}
+CIwGxFont
+{
+	name "gxfont_small"
+	ttf "./fonts/coolvetica.ttf"
+	ttfPointSize 4	
 }

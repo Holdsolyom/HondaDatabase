@@ -3,7 +3,7 @@ CIwUIPropertySet
 	name "<font_title>"
 
 	sizeToContent false
-	font "font_large"
+	font "gxfont_large"
 	textColour { 255 255 255 255 }
 	alignH "centre"
 	alignV "middle"
@@ -11,10 +11,10 @@ CIwUIPropertySet
 }
 CIwUIPropertySet 
 {
-	name "<font_heading>"
+	name "<font_name>"
 
 	sizeToContent false
-	font "font_medium"
+	font "gxfont_medium"
 	textColour { 255 255 255 255 }
 	alignH "centre"
 	alignV "middle"
@@ -22,21 +22,14 @@ CIwUIPropertySet
 }
 CIwUIPropertySet 
 {
-	name "<font_body>"
+	name "<font_description>"
 	sizeToContent false
-	font "font_tiny"
+	font "gxfont_small"
 	textColour {255 255 255 255 }
 	alignH "centre"
 	alignV "middle"
 	margin  { 0 0 }
 
-}
-CIwUIPropertySet 
-{
-	name "<button>"
-	drawableType "border"
-	texture "button"
-	border  { 1 1 }
 }
 CIwUIPropertySet 
 {
@@ -67,8 +60,43 @@ CIwUIPropertySet
 }
 CIwUIPropertySet 
 {
-	name "<2button_back>"
+	name "<back_button1>"
 	drawableType "border"
-	texture "2button_back"
+	texture "back_button1"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<back_button2>"
+	drawableType "border"
+	texture "back_button2"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<list_back1>"
+	drawableType "border"
+	texture "list_back1"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<list_back2>"
+	drawableType "border"
+	texture "list_back2"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<dialog_button1>"
+	drawableType "border"
+	texture "dialog_button1"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<dialog_button2>"
+	drawableType "border"
+	texture "dialog_button2"
 	border  { 1 1 }
 }

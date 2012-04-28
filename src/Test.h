@@ -6,18 +6,30 @@
 #include "IwGx.h"
 #include "IwUI.h"
 #include "cstdlib"
+#include "map"
 
 class Menu
 {
 public:
+	Menu(int num)
+	{
+	text=new CIwString<64>[num];
+	description= new CIwString<80>[num];
+	icon=new CIwString<32>[num];
+	previousmenu=new CIwString<32>[num];
+	nextmenu=new  CIwString<32>[num];
+	listindex= new  CIwString<32>[num];
+	listindex2=new  CIwString<32>[num];
+	RowNum=0;
+	}
 	CIwString<32> name;
-	CIwString<32> text[500];
-	CIwString<80> description[500];
-	CIwString<32> icon[500];
-	CIwString<32> previousmenu[500];
-	CIwString<32> nextmenu[500];
-	CIwString<32> listindex[500];
-	CIwString<32> listindex2[500];
+	CIwString<64>* text;
+	CIwString<80>* description;
+	CIwString<32>* icon;
+	CIwString<32>* previousmenu;
+	CIwString<32>* nextmenu;
+	CIwString<32>* listindex;
+	CIwString<32>* listindex2;
 	int RowNum;
 };
 
@@ -47,6 +59,7 @@ public:
 	void DePopulate();
 	void LoadDatabase();
 	void InitUI();
+	void LoadMenu(std::string name);
 	CIwList<CIwUIElement*>* pItemList;
 	CIwList<CIwTexture*>* pTextures;
 	int selectedItemIndex;
@@ -59,13 +72,36 @@ public:
 	Menu* EcuCodes;
 	Menu* OBD1List;
 	Menu* OBD2List;
+	Menu* Transmissions;
+	Menu* TransData;
+	Menu* CWList;
+	Menu* CW85;
+	Menu* CW86;
+	Menu* CW87;
+	Menu* CW88;
+	Menu* CW89;
+	Menu* CW90;
+	Menu* CW91;
+	Menu* CW92;
+	Menu* CW93;
+	Menu* CW94;
+	Menu* CW95;
+	Menu* CW96;
+	Menu* CW97;
+	Menu* CW98;
+	Menu* CW99;
+	Menu* CW00;
+	Menu* CW01;
+	Menu* CW02;
+	Menu* CW03;
+
 	CIwUIElement* pQuit;
 	CIwUIButton* pBack;
 	CIwUIButton* pOptions;
 	CIwUIAlertDialog* pAlertDialog;
 	static bool ButtonEvent;
 	sqlite3* db;
-
+	std::map<std::string, Menu*> map;
 private:
 	
 	CIwUIElement* pList;

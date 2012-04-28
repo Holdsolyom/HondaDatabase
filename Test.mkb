@@ -2,6 +2,10 @@ packages
 {
 	sqlite
 }
+defines
+{
+IW_GXFONT_TTF
+}
 files
 {
 	(src)
@@ -24,9 +28,7 @@ assets
 	honda.db
 	textures/a20.png
 	textures/b16.png
-	textures/background.tga
 	textures/bearing.png
-	textures/button.tga
 	textures/c_v6.png
 	textures/cel.png
 	textures/d16.png
@@ -41,7 +43,6 @@ assets
 	textures/k20.png
 	textures/l13.png
 	textures/n22.png
-	textures/quit.png
 	textures/trans.png
 	textures/weight.png
 (data-ram/data-gles1)

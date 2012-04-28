@@ -1,19 +1,14 @@
 CIwResGroup
-
 {
-	
 	name textures
-
-
 	./background.png
-	
-	./button.tga
-
-	./quit.png
-
 	./dialog_back.png
-	
 	./header_back.png
-	
-	./2button_back.png
+	./back_button1.png
+	./back_button2.png
+	./dialog_button1.png
+	./dialog_button2.png
+	./list_back1.png
+	./list_back2.png
+
 }
