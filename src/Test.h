@@ -70,6 +70,7 @@ public:
 	Menu* EngineSeries;
 	Menu* EngineData;
 	Menu* EcuCodes;
+	Menu* Eculist;
 	Menu* OBD1List;
 	Menu* OBD2List;
 	Menu* Transmissions;
@@ -94,6 +95,14 @@ public:
 	Menu* CW01;
 	Menu* CW02;
 	Menu* CW03;
+	Menu* Tech;
+	Menu* Bearing;
+	Menu* MainBearing;
+	Menu* RodBearing;
+	Menu* ECUPinouts;
+	Menu* obd0dpfipinout;
+	Menu* obd0mpfipinout;
+	Menu* obd1ecupinout;
 
 	CIwUIElement* pQuit;
 	CIwUIButton* pBack;
