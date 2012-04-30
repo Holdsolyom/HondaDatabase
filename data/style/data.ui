@@ -1,0 +1,1613 @@
+CIwUIElement 
+{
+	name "EngineDataUI"
+	pos  { 0 0 }
+	size  { 320 480 }
+	colour { 255 255 255 255 }
+	CIwUILabel 
+	{
+		name "name"
+		pos  { 0 0 }
+		size  { 320 37 }
+		style <font_title>
+		sizeMin  { 320 37 }
+		caption "name"
+		textColour { 0 0 0 255 }
+		alignH "centre"
+		oneLine false
+	}
+	CIwUILabel 
+	{
+			name "model"
+			pos  { 0 37 }
+			size  { 320 37 }
+			style  "<font_name>"
+			sizeMin  { 300 37 }
+			caption "model"
+			textColour { 0 0 0 255 }
+			alignH "left"
+			margin  { 5 0 }
+	}
+	CIwUIElement 
+		{
+			name "Horizontal_0"
+			pos  { 0 74 }
+			size  { 320 37 }
+			sizeMin  { 320 0 }
+			CIwUILabel 
+			{
+				name "Label_2"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Displacement:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "disp_cc"
+				pos  { 160 0 }
+				size  { 100 37 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "disp_cc"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_4"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "cc"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_2"
+				}
+				element 
+				{
+					name "disp_cc"
+				}
+				element 
+				{
+					name "Label_4"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_1"
+			pos  { 0 111 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_5"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "disp_cu"
+				pos  { 160 0 }
+				size  { 100 37 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "disp_cu"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_7"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "cu"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_5"
+				}
+				element 
+				{
+					name "disp_cu"
+				}
+				element 
+				{
+					name "Label_7"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_2"
+			pos  { 0 148 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_0"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Bore:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "bore_mm"
+				pos  { 160 0 }
+				size  { 100 37 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "bore_mm"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_3"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "mm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_0"
+				}
+				element 
+				{
+					name "bore_mm"
+				}
+				element 
+				{
+					name "Label_3"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_3"
+			pos  { 0 185 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_1"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "bore_in"
+				pos  { 160 0 }
+				size  { 100 37 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "bore_in"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_8"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "in"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_1"
+				}
+				element 
+				{
+					name "bore_in"
+				}
+				element 
+				{
+					name "Label_8"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_4"
+			pos  { 0 222 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_6"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Stroke:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "stroke_mm"
+				pos  { 160 0 }
+				size  { 100 37 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "stroke_mm"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_10"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "mm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_6"
+				}
+				element 
+				{
+					name "stroke_mm"
+				}
+				element 
+				{
+					name "Label_10"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_5"
+			pos  { 0 259 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_9"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "stroke_in"
+				pos  { 160 0 }
+				size  { 100 37 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "stroke_in"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_12"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "in"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_9"
+				}
+				element 
+				{
+					name "stroke_in"
+				}
+				element 
+				{
+					name "Label_12"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_6"
+			pos  { 0 296 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_11"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Compression:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "compression"
+				pos  { 160 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "compression"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_11"
+				}
+				element 
+				{
+					name "compression"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_7"
+			pos  { 0 333 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_13"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Piston Code:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "pistoncode"
+				pos  { 160 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "pistoncode"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_13"
+				}
+				element 
+				{
+					name "pistoncode"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_8"
+			pos  { 0 370 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_14"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Piston Dome:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "pistondome"
+				pos  { 160 0 }
+				size  { 100 37 }
+				offset  { 0 0 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "pistondome"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_16"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "cc"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_14"
+				}
+				element 
+				{
+					name "pistondome"
+				}
+				element 
+				{
+					name "Label_16"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_9"
+			pos  { 0 407 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_15"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Combustion Chamber:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "cchamber"
+				pos  { 160 0 }
+				size  { 100 37 }
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "cchamber"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_18"
+				pos  { 260 0 }
+				size  { 60 37 }
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "cc"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_15"
+				}
+				element 
+				{
+					name "cchamber"
+				}
+				element 
+				{
+					name "Label_18"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_10"
+			pos  { 0 444 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_17"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Stroke/Bore Ratio:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "strokeboreratio"
+				pos  { 160 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "strokeboreratio"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_17"
+				}
+				element 
+				{
+					name "strokeboreratio"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_11"
+			pos  { 0 481 }
+			size  { 320 37 }
+			CIwUILabel 
+			{
+				name "Label_19"
+				pos  { 0 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Rod/Stroke Ratio:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "rodstrokeratio"
+				pos  { 160 0 }
+				size  { 160 37 }
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "rodstrokeratio"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_19"
+				}
+				element 
+				{
+					name "Label_20"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_12"
+			CIwUILabel 
+			{
+				name "Label_21"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Rod Lenght:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "rod_mm"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "rod_mm"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_21"
+				}
+				element 
+				{
+					name "rod_mm"
+				}
+				element 
+				{
+					name "Label_23"
+				}
+			}
+			CIwUILabel 
+			{
+				name "Label_23"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "mm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_13"
+			CIwUILabel 
+			{
+				name "Label_22"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "rod_in"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "rod_in"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_25"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "in"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_22"
+				}
+				element 
+				{
+					name "rod_in"
+				}
+				element 
+				{
+					name "Label_25"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_14"
+			CIwUILabel 
+			{
+				name "Label_24"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Deck Height:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "deck_height"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "deck_height"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_27"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "mm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_24"
+				}
+				element 
+				{
+					name "deck_height"
+				}
+				element 
+				{
+					name "Label_27"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_15"
+			CIwUILabel 
+			{
+				name "Label_26"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Valvetrain:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "valvetrain"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "valvetrain"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_26"
+				}
+				element 
+				{
+					name "valvetrain"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_16"
+			CIwUILabel 
+			{
+				name "Label_28"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Camgear:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "camgear"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "camgear"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_28"
+				}
+				element 
+				{
+					name "camgear"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_17"
+			CIwUILabel 
+			{
+				name "Label_29"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Fuel:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "fuel"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "fuel"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_29"
+				}
+				element 
+				{
+					name "fuel"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_18"
+			CIwUILabel 
+			{
+				name "Label_30"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Power:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "power_hp"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "power_hp"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_32"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "HP"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_30"
+				}
+				element 
+				{
+					name "power_hp"
+				}
+				element 
+				{
+					name "Label_32"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_19"
+			CIwUILabel 
+			{
+				name "Label_31"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "power_kw"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "power_kw"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_34"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "kW"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_31"
+				}
+				element 
+				{
+					name "power_kw"
+				}
+				element 
+				{
+					name "Label_34"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_20"
+			CIwUILabel 
+			{
+				name "Label_33"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "power_rpm"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "power_rpm"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_36"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "rpm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_33"
+				}
+				element 
+				{
+					name "power_rpm"
+				}
+				element 
+				{
+					name "Label_36"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_21"
+			CIwUILabel 
+			{
+				name "Label_35"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Torque:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "torque_lbft"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "torque_lbft"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_38"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "lb.ft"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_35"
+				}
+				element 
+				{
+					name "torque_lbft"
+				}
+				element 
+				{
+					name "Label_38"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_22"
+			CIwUILabel 
+			{
+				name "Label_37"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "torque_nm"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "torque_nm"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_40"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "Nm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_37"
+				}
+				element 
+				{
+					name "torque_nm"
+				}
+				element 
+				{
+					name "Label_40"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_23"
+			CIwUILabel 
+			{
+				name "Label_39"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption " "
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "torque_rpm"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "torque_rpm"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_42"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "rpm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_39"
+				}
+				element 
+				{
+					name "torque_rpm"
+				}
+				element 
+				{
+					name "Label_42"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_24"
+			CIwUILabel 
+			{
+				name "Label_41"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "VTEC:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "vtec"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "vtec"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_44"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "rpm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_41"
+				}
+				element 
+				{
+					name "vtec"
+				}
+				element 
+				{
+					name "Label_44"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_25"
+			CIwUILabel 
+			{
+				name "Label_43"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Redline:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "redline"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "redline"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_46"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "rpm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_43"
+				}
+				element 
+				{
+					name "redline"
+				}
+				element 
+				{
+					name "Label_46"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_26"
+			CIwUILabel 
+			{
+				name "Label_45"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Revlimit:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "revlimit"
+				style  "<font_name>"
+				sizeMin  { 100 37 }
+				caption "revlimit"
+				textColour { 0 0 0 255 }
+				alignH "right"
+				margin  { 2 0 }
+			}
+			CIwUILabel 
+			{
+				name "Label_48"
+				style  "<font_name>"
+				sizeMin  { 60 37 }
+				caption "rpm"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_45"
+				}
+				element 
+				{
+					name "revlimit"
+				}
+				element 
+				{
+					name "Label_48"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_27"
+			CIwUILabel 
+			{
+				name "Label_47"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Transmission:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "trans"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "trans"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_47"
+				}
+				element 
+				{
+					name "trans"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_28"
+			CIwUILabel 
+			{
+				name "Label_49"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "ECU Code:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILabel 
+			{
+				name "ecucode"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "ecucode"
+				textColour { 0 0 0 255 }
+				alignH "centre"
+				margin  { 2 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_49"
+				}
+				element 
+				{
+					name "ecucode"
+				}
+			}
+		}
+		CIwUIElement 
+		{
+			name "Horizontal_29"
+			CIwUILabel 
+			{
+				name "Label_50"
+				style  "<font_name>"
+				sizeMin  { 160 37 }
+				caption "Note:"
+				textColour { 0 0 0 255 }
+				alignH "left"
+				margin  { 5 0 }
+			}
+			CIwUILayoutHorizontal 
+			{
+				name ""
+				element 
+				{
+					name "Label_50"
+				}
+			}
+		}
+		CIwUILabel 
+		{
+			name "note"
+			style  "<font_name>"
+			sizeMin  { 320 37 }
+			caption "note"
+			textColour { 0 0 0 255 }
+			alignH "left"
+			margin  { 5 0 }
+		}
+		CIwUILayoutVertical 
+		{
+			name ""
+			element 
+			{
+				name "name"
+			}
+			element 
+			{
+				name "model"
+			}
+			element 
+			{
+				name "Horizontal_0"
+			}
+			element 
+			{
+				name "Horizontal_1"
+			}
+			element 
+			{
+				name "Horizontal_2"
+			}
+			element 
+			{
+				name "Horizontal_3"
+			}
+			element 
+			{
+				name "Horizontal_4"
+			}
+			element 
+			{
+				name "Horizontal_5"
+			}
+			element 
+			{
+				name "Horizontal_6"
+			}
+			element 
+			{
+				name "Horizontal_7"
+			}
+			element 
+			{
+				name "Horizontal_8"
+			}
+			element 
+			{
+				name "Horizontal_9"
+			}
+			element 
+			{
+				name "Horizontal_10"
+			}
+			element 
+			{
+				name "Horizontal_11"
+			}
+			element 
+			{
+				name "Horizontal_12"
+			}
+			element 
+			{
+				name "Horizontal_13"
+			}
+			element 
+			{
+				name "Horizontal_14"
+			}
+			element 
+			{
+				name "Horizontal_15"
+			}
+			element 
+			{
+				name "Horizontal_16"
+			}
+			element 
+			{
+				name "Horizontal_17"
+			}
+			element 
+			{
+				name "Horizontal_18"
+			}
+			element 
+			{
+				name "Horizontal_19"
+			}
+			element 
+			{
+				name "Horizontal_20"
+			}
+			element 
+			{
+				name "Horizontal_21"
+			}
+			element 
+			{
+				name "Horizontal_22"
+			}
+			element 
+			{
+				name "Horizontal_23"
+			}
+			element 
+			{
+				name "Horizontal_24"
+			}
+			element 
+			{
+				name "Horizontal_25"
+			}
+			element 
+			{
+				name "Horizontal_26"
+			}
+			element 
+			{
+				name "Horizontal_27"
+			}
+			element 
+			{
+				name "Horizontal_28"
+			}
+			element 
+			{
+				name "Horizontal_29"
+			}
+			element 
+			{
+				name "note"
+			}
+		}
+}
