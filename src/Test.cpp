@@ -28,8 +28,8 @@ void Test::InitUI()
 	IwGetResManager()->LoadGroup("Test.group");
 	CIwResource* pResource = IwGetResManager()->GetResNamed("iwui", IW_UI_RESTYPE_STYLESHEET);
     IwGetUIStyleManager()->SetStylesheet(IwSafeCast<CIwUIStylesheet*>(pResource));
-	CIwUIElement* pMainui = (CIwUIElement*)IwGetResManager()->GetResNamed("Main", "CIwUIElement");
-	CIwUIElement* pMainuiClone=pMainui->Clone();
+	pMainui = (CIwUIElement*)IwGetResManager()->GetResNamed("Main", "CIwUIElement");
+	pMainuiClone=pMainui->Clone();
 	pList = pMainuiClone->GetChildNamed("List");
 	pBack=(CIwUIButton*)pMainuiClone->GetChildNamed("Back");
 	pOptions=(CIwUIButton*)pMainuiClone->GetChildNamed("Options");
@@ -37,12 +37,12 @@ void Test::InitUI()
 	handler->AddParent(this);
 	pMainuiClone->AddEventHandler(handler);
 	pItemTemplate = (CIwUIElement*)IwGetResManager()->GetResNamed("Item", "CIwUIElement");
-
+	pEngineDataUI = (CIwUIElement*)IwGetResManager()->GetResNamed("EngineDataUI", "CIwUIElement");
 	pQuit=(CIwUIElement*)IwGetResManager()->GetResNamed("Quit", "CIwUIElement");
 	pAlertDialog=(CIwUIAlertDialog*)pQuit->GetChildNamed("AlertDialog");
 	pQuit->SetVisible(false);
 	pQuit->AddEventHandler(handler);
-	IwGetUIView()->AddElementToLayout(pMainuiClone);
+	IwGetUIView()->AddElement(pMainuiClone);
 	IwGetUIView()->AddElementToLayout(pQuit);
 
 }
@@ -72,6 +72,10 @@ void Test::Terminate()
 	pTextures->clear();
 	delete pTextures;
 	pItemList->clear();
+	delete pEngineDataUI;
+	delete pMainui;
+	delete pMainuiClone;
+	delete pQuit;
     delete pItemList;
 	delete MainMenu;
 	delete EngineList;
@@ -136,7 +140,7 @@ void Test::LoadDatabase()
 	map["EngineList"] =EngineList;
 	EngineSeries=new Menu(50);
 	map["EngineSeries"] =EngineSeries;
-	EngineData=new Menu(500);
+	EngineData=new EngineDataMenu(500);
 	map["EngineData"] =EngineData;
 	EcuCodes=new Menu(20);
 	map["EcuCodes"] =EcuCodes;
@@ -267,18 +271,52 @@ void Test::LoadMenu(std::string name)
 	map[name]->previousmenu[x]=result[5].c_str();
 	map[name]->listindex[x]=result[7].c_str();
 	if (name=="EngineData")
-	{
-		map[name]->listindex2[x]=result[8].c_str();
-	}
+		{
+		((EngineDataMenu*)map[name])->listindex2[x]=result[8].c_str();
+		((EngineDataMenu*)map[name])->EModel[x]=result[9].c_str();
+		((EngineDataMenu*)map[name])->EDisp_cc[x]=result[10].c_str();
+		((EngineDataMenu*)map[name])->EDisp_cu[x]=result[11].c_str();
+		((EngineDataMenu*)map[name])->EBore_mm[x]=result[12].c_str();
+		((EngineDataMenu*)map[name])->EBore_in[x]=result[13].c_str();
+		((EngineDataMenu*)map[name])->EStroke_mm[x]=result[14].c_str();
+		((EngineDataMenu*)map[name])->EStroke_in[x]=result[15].c_str();
+		((EngineDataMenu*)map[name])->Ecompression[x]=result[16].c_str();
+		((EngineDataMenu*)map[name])->EPistonCode[x]=result[17].c_str();
+		((EngineDataMenu*)map[name])->EPistonDome[x]=result[18].c_str();
+		((EngineDataMenu*)map[name])->ECombChamberVol[x]=result[19].c_str();
+		((EngineDataMenu*)map[name])->EStrokeBoreRatio[x]=result[20].c_str();
+		((EngineDataMenu*)map[name])->ERodStrokeRatio[x]=result[21].c_str();
+		((EngineDataMenu*)map[name])->ERod_lenght_mm[x]=result[22].c_str();
+		((EngineDataMenu*)map[name])->ERod_lenght_in[x]=result[23].c_str();
+		((EngineDataMenu*)map[name])->EDeckHeight[x]=result[24].c_str();
+		((EngineDataMenu*)map[name])->EValvetrain[x]=result[25].c_str();
+		((EngineDataMenu*)map[name])->ECamgear[x]=result[26].c_str();
+		((EngineDataMenu*)map[name])->EFuel[x]=result[27].c_str();
+		((EngineDataMenu*)map[name])->EPower_hp[x]=result[28].c_str();
+		((EngineDataMenu*)map[name])->EPower_kw[x]=result[29].c_str();
+		((EngineDataMenu*)map[name])->EPowerRPM[x]=result[30].c_str();
+		((EngineDataMenu*)map[name])->ETorque_lb[x]=result[31].c_str();
+		((EngineDataMenu*)map[name])->ETorque_nm[x]=result[32].c_str();
+		((EngineDataMenu*)map[name])->ETorqueRPM[x]=result[33].c_str();
+		((EngineDataMenu*)map[name])->EVtec[x]=result[34].c_str();
+		((EngineDataMenu*)map[name])->ERedline[x]=result[35].c_str();
+		((EngineDataMenu*)map[name])->ERevlimit[x]=result[36].c_str();
+		((EngineDataMenu*)map[name])->ETrans[x]=result[37].c_str();
+		((EngineDataMenu*)map[name])->EEcucode[x]=result[38].c_str();
+		((EngineDataMenu*)map[name])->EDesc[x]=result[39].c_str();
+		}
 	}
 
 }
 void Test::AddListItem(int ItemId,const char* iconname,const char* name,const char* desc)
 {
-	IwDebugTraceLinePrintf("%s",name);
+	char itemid[5];
+	sprintf(itemid,"%d",ItemId);
     CIwUIElement* pItem = pItemTemplate->Clone();
     IwSafeCast<CIwUIButton*>(pItem->GetChildNamed("Name"))->SetCaption(name);
 	IwSafeCast<CIwUILabel*>(pItem->GetChildNamed("Desc"))->SetCaption(desc);
+	IwSafeCast<CIwUILabel*>(pItem->GetChildNamed("ID"))->SetCaption(itemid);
+	IwDebugTraceLinePrintf(itemid);
 	char filepath[30];
 	sprintf(filepath,"./textures/%s.png",iconname);
 	CIwTexture* tex=new CIwTexture;
@@ -312,31 +350,74 @@ void Test::DeleteListItem()
 void Test::Populate()
 {
 	int row=1;
+	
+	if (ShowEngineData==1)
+	{
+		pList->AddChild(pEngineDataUI);
+		pList->GetLayout()->AddElement(pEngineDataUI);
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("name"))->SetCaption(EngineData->text[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("model"))->SetCaption(EngineData->EModel[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("disp_cc"))->SetCaption(EngineData->EDisp_cc[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("disp_cu"))->SetCaption(EngineData->EDisp_cu[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("bore_mm"))->SetCaption(EngineData->EBore_mm[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("bore_in"))->SetCaption(EngineData->EBore_in[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("stroke_mm"))->SetCaption(EngineData->EStroke_mm[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("stroke_in"))->SetCaption(EngineData->EStroke_in[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("compression"))->SetCaption(EngineData->Ecompression[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("pistoncode"))->SetCaption(EngineData->EPistonCode[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("pistondome"))->SetCaption(EngineData->EPistonDome[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("cchamber"))->SetCaption(EngineData->ECombChamberVol[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("strokeboreratio"))->SetCaption(EngineData->EStrokeBoreRatio[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("rodstrokeratio"))->SetCaption(EngineData->ERodStrokeRatio[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("rod_mm"))->SetCaption(EngineData->ERod_lenght_mm[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("rod_in"))->SetCaption(EngineData->ERod_lenght_in[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("deck_height"))->SetCaption(EngineData->EDeckHeight[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("valvetrain"))->SetCaption(EngineData->EValvetrain[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("camgear"))->SetCaption(EngineData->ECamgear[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("fuel"))->SetCaption(EngineData->EFuel[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("power_hp"))->SetCaption(EngineData->EPower_hp[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("power_kw"))->SetCaption(EngineData->EPower_kw[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("power_rpm"))->SetCaption(EngineData->EPowerRPM[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("torque_lbft"))->SetCaption(EngineData->ETorque_lb[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("torque_nm"))->SetCaption(EngineData->ETorque_nm[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("torque_rpm"))->SetCaption(EngineData->ETorqueRPM[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("vtec"))->SetCaption(EngineData->EVtec[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("redline"))->SetCaption(EngineData->ERedline[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("revlimit"))->SetCaption(EngineData->ERevlimit[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("trans"))->SetCaption(EngineData->ETrans[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("ecucode"))->SetCaption(EngineData->EEcucode[SelectedItemRowIndex].c_str());
+			((CIwUILabel*)pEngineDataUI->GetChildNamed("note"))->SetCaption(EngineData->EDesc[SelectedItemRowIndex].c_str());
+		return;
+	} 
+	else
+	if (ShowEngineData==2)
+	{	
+		pList->GetLayout()->RemoveElement(pEngineDataUI);
+		pList->RemoveChild(pEngineDataUI);
+		ShowEngineData=0;
+	}
+
 	while (row<=currentmenu->RowNum)
 	{
 		if (currentmenu->listindex[row]=="-1")
-		{
-		AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
-		} 
-		else
-		if (currentmenu->name=="EngineData")
-		{
-			IwDebugTraceLinePrintf("itemindex=%d",selectedItemIndex);
-			IwDebugTraceLinePrintf("categoryindex=%d",CategoryIndex);
-			if ((atoi(currentmenu->listindex[row].c_str())==selectedItemIndex) && (atoi(currentmenu->listindex2[row].c_str())==CategoryIndex))
 			{
-			AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
-			}
-		} 
-		else
+				AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
+			} 
+			else
+		if (currentmenu->name=="EngineData")
+			{
+				if ((atoi(currentmenu->listindex[row].c_str())==selectedItemIndex) && (atoi(currentmenu->listindex2[row].c_str())==CategoryIndex))
+				{
+				AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
+				}
+			} 
+			else
 		if (atoi(currentmenu->listindex[row].c_str())==selectedItemIndex)
-		{
-			AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
-		}
-		row++;
+			{
+				AddListItem(row,currentmenu->icon[row].c_str(),currentmenu->text[row].c_str(),currentmenu->description[row].c_str());
+			}
+			row++;
 	}
-
-
 }
 
 void Test::DePopulate()
@@ -349,6 +430,8 @@ void Test::DePopulate()
 	pItemList->clear();
 }
 bool Test::ButtonEvent=false;
+int Test::ShowEngineData=0;
+int Test::SelectedItemRowIndex=0;
 void ClickHandler::AddParent(void* parent)
 {
 	pParent=parent;
@@ -366,18 +449,34 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 				CIwUIElement* elem=(CIwUIElement*)test->pItemList->element_at(x);
 				if (item==elem)
 				{
+				if (test->currentmenu->name=="EngineData")
+				{
+						test->ShowEngineData=1;
+						test->SelectedItemRowIndex=atoi(((CIwUILabel*)elem->GetChildNamed("ID"))->GetCaption());
+				}
+				else
+				{
 					CIwString<32> nextmenu=test->currentmenu->nextmenu[x+1];
+					if (test->currentmenu->name=="EngineList")
+						{
+						test->CategoryIndex=x;
+						}
+
 					test->currentmenu=test->map[nextmenu.c_str()];
 					test->selectedItemIndex=x;
-					if (test->currentmenu->name=="EngineSeries")
-					{
-						test->CategoryIndex=x;
-					}
-					IwDebugTraceLinePrintf("%d",test->CategoryIndex);
+				}
+
+			
 				}
 			}
 			if ((CIwUIButton*)pEvent->GetSender()==test->pBack)
 			{
+					if (test->ShowEngineData==1)
+					{
+						
+						test->ShowEngineData=2;
+					}
+					else
 					if (test->currentmenu->name=="MainMenu")
 					{
 						
@@ -391,6 +490,9 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 						CIwString<32> previousmenu=test->currentmenu->previousmenu[1];
 						test->currentmenu=test->map[previousmenu.c_str()];
 					}
+			}
+			if ((CIwUIButton*)pEvent->GetSender()==test->pOptions)
+			{
 			}
 
 			Test::ButtonEvent=true;

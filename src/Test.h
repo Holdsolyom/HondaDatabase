@@ -22,6 +22,7 @@ public:
 	listindex2=new  CIwString<32>[num];
 	RowNum=0;
 	}
+	
 	CIwString<32> name;
 	CIwString<64>* text;
 	CIwString<80>* description;
@@ -32,7 +33,75 @@ public:
 	CIwString<32>* listindex2;
 	int RowNum;
 };
-
+class EngineDataMenu : public Menu
+{
+public:
+	EngineDataMenu(int num) : Menu(num)
+	{
+		EModel=new CIwString<512>[num];
+		EDisp_cc=new CIwString<32>[num];
+		EDisp_cu=new CIwString<32>[num];
+		EBore_mm=new CIwString<32>[num];
+		EBore_in=new CIwString<32>[num];
+		EStroke_mm=new CIwString<32>[num];
+		EStroke_in=new CIwString<32>[num];
+		Ecompression=new CIwString<32>[num];
+		EPistonCode=new CIwString<32>[num];
+		EPistonDome=new CIwString<32>[num];
+		ECombChamberVol=new CIwString<32>[num];
+		EStrokeBoreRatio=new CIwString<32>[num];
+		ERodStrokeRatio=new CIwString<32>[num];
+		ERod_lenght_mm=new CIwString<32>[num];
+		ERod_lenght_in=new CIwString<32>[num];
+		EDeckHeight=new CIwString<32>[num];
+		EValvetrain=new CIwString<32>[num];
+		ECamgear=new CIwString<32>[num];
+		EFuel=new CIwString<128>[num];
+		EPower_hp=new CIwString<32>[num];
+		EPower_kw=new CIwString<32>[num];
+		EPowerRPM=new CIwString<32>[num];
+		ETorque_lb=new CIwString<32>[num];
+		ETorque_nm=new CIwString<32>[num];
+		ETorqueRPM=new CIwString<32>[num];
+		EVtec=new CIwString<64>[num];
+		ERedline=new CIwString<32>[num];
+		ERevlimit=new CIwString<32>[num];
+		ETrans=new CIwString<64>[num];
+		EEcucode=new CIwString<64>[num];
+		EDesc=new CIwString<768>[num];
+	}
+		CIwString<512>* EModel;
+		CIwString<32>* EDisp_cc;
+		CIwString<32>* EDisp_cu;
+		CIwString<32>* EBore_mm;
+		CIwString<32>* EBore_in;
+		CIwString<32>* EStroke_mm;
+		CIwString<32>* EStroke_in;
+		CIwString<32>* Ecompression;
+		CIwString<32>* EPistonCode;
+		CIwString<32>* EPistonDome;
+		CIwString<32>* ECombChamberVol;
+		CIwString<32>* EStrokeBoreRatio;
+		CIwString<32>* ERodStrokeRatio;
+		CIwString<32>* ERod_lenght_mm;
+		CIwString<32>* ERod_lenght_in;
+		CIwString<32>* EDeckHeight;
+		CIwString<32>* EValvetrain;
+		CIwString<32>* ECamgear;
+		CIwString<128>* EFuel;
+		CIwString<32>* EPower_hp;
+		CIwString<32>* EPower_kw;
+		CIwString<32>* EPowerRPM;
+		CIwString<32>* ETorque_lb;
+		CIwString<32>* ETorque_nm;
+		CIwString<32>* ETorqueRPM;
+		CIwString<64>* EVtec;
+		CIwString<32>* ERedline;
+		CIwString<32>* ERevlimit;
+		CIwString<64>* ETrans;
+		CIwString<64>* EEcucode;
+		CIwString<768>* EDesc;
+};
 class ClickHandler : public CIwUIElementEventHandler
 {
 public:
@@ -68,7 +137,7 @@ public:
 	Menu* MainMenu;
 	Menu* EngineList;
 	Menu* EngineSeries;
-	Menu* EngineData;
+	EngineDataMenu* EngineData;
 	Menu* EcuCodes;
 	Menu* Eculist;
 	Menu* OBD1List;
@@ -109,6 +178,8 @@ public:
 	CIwUIButton* pOptions;
 	CIwUIAlertDialog* pAlertDialog;
 	static bool ButtonEvent;
+	static int ShowEngineData;
+	static int SelectedItemRowIndex;
 	sqlite3* db;
 	std::map<std::string, Menu*> map;
 private:
@@ -116,6 +187,9 @@ private:
 	CIwUIElement* pList;
 	CIwUIElement* pLabel;
 	CIwUIElement* pItemTemplate;
+	CIwUIElement* pEngineDataUI;
+	CIwUIElement* pMainui;
+	CIwUIElement* pMainuiClone;
 	CIwTexture* pIcon;
 	CIwTexture* pBG;
 	ClickHandler* handler;
@@ -128,4 +202,4 @@ private:
 
 int main();
 int sql_callback(void* none,int argc,char** argv,char** col);
-CIwString<1000> result[40];
+CIwString<1024> result[40];

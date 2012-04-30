@@ -17,6 +17,13 @@ CIwUIElement
 			alignv "middle"
 		}
 	}
+	CIwUILabel
+	{
+		name "ID"
+		visible false
+		style <font_name>
+		caption ""
+	}
 	CIwUIButton
 	{
 		name "Name"

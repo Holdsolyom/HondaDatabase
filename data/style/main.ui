@@ -26,10 +26,10 @@ CIwUIElement
 		{
 			name "Options"
 			pos  { 250 7 }
-			size  { 85 30 }
-			style <font_name>
-			sizeMin  { 85 30 }
-			sizeMax  { 85 30 }
+			size  { 65 30 }
+			style <font_description>
+			sizeMin  { 65 30 }
+			sizeMax  { 65 30 }
 			caption "Options"
 			buttonUp <back_button1>
 			buttonDown <back_button2>
@@ -38,10 +38,10 @@ CIwUIElement
 		{
 			name "Back"
 			pos  { 7 7 }
-			size  { 85 30 }
-			style <font_name>
-			sizeMin  { 85 30 }
-			sizeMax  { 85 30 }
+			size  { 65 30 }
+			style <font_description>
+			sizeMin  { 65 30 }
+			sizeMax  { 65 30 }
 			caption "Back"
 			buttonUp <back_button1>
 			buttonDown <back_button2>
@@ -78,18 +78,18 @@ CIwUIElement
 CIwGxFont
 {
 	name "gxfont_large"
-	ttf "./fonts/coolvetica.ttf"
-	ttfPointSize 10	
+	ttf "./fonts/arialbd.ttf"
+	ttfPointSize 7	
 }
 CIwGxFont
 {
 	name "gxfont_medium"
-	ttf "./fonts/coolvetica.ttf"
-	ttfPointSize 8	
+	ttf "./fonts/arialbd.ttf"
+	ttfPointSize 6	
 }
 CIwGxFont
 {
 	name "gxfont_small"
-	ttf "./fonts/coolvetica.ttf"
-	ttfPointSize 4	
+	ttf "./fonts/arial.ttf"
+	ttfPointSize 5	
 }

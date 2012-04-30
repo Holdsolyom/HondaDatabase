@@ -1,7 +1,7 @@
 [S3E]
-MemSize=5485760			# 5 Mb
-MemSizeDebugDevice=5485760	# 5  Mb
-MemSizeDebug=5971520		# 5 Mb
+MemSize=10000000			# 10 Mb
+MemSizeDebugDevice=10000000	# 10  Mb
+MemSizeDebug=10000000		# 10 Mb
 MemMgrMaxAllocWarning=0
 DispFixRot="FixedPortrait"
 

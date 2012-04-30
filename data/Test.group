@@ -10,6 +10,7 @@ CIwResGroup
 	./style/list.ui
 	./style/quit.ui
 
+        ./style/data.ui
 	resources.group
 
 	./style/stylesheet.itx
