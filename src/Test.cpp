@@ -4,6 +4,7 @@ using namespace std;
 
 Test::Test()
 {
+	WebView=NULL;
 	MainLoop();
 }
 void Test::Init()
@@ -115,6 +116,10 @@ void Test::Terminate()
 	delete obd0dpfipinout;
 	delete obd0mpfipinout;
 	delete obd1ecupinout;
+	if (WebView)
+    {
+        s3eWebViewDestroy(WebView);
+    }
 
 	IwUITerminate();
 	IwGxTerminate();
@@ -148,7 +153,7 @@ void Test::LoadDatabase()
 	map["Eculist"] =Eculist;
 	OBD1List=new Menu(50);
 	map["OBD1List"] =OBD1List;
-	OBD2List=new Menu(50);
+	OBD2List=new Menu(80);
 	map["OBD2List"] =OBD2List;
 	Transmissions=new Menu(10);
 	map["Transmissions"] =Transmissions;
@@ -313,10 +318,9 @@ void Test::AddListItem(int ItemId,const char* iconname,const char* name,const ch
 	char itemid[5];
 	sprintf(itemid,"%d",ItemId);
     CIwUIElement* pItem = pItemTemplate->Clone();
-    IwSafeCast<CIwUIButton*>(pItem->GetChildNamed("Name"))->SetCaption(name);
+    IwSafeCast<CIwUILabel*>(pItem->GetChildNamed("Name"))->SetCaption(name);
 	IwSafeCast<CIwUILabel*>(pItem->GetChildNamed("Desc"))->SetCaption(desc);
 	IwSafeCast<CIwUILabel*>(pItem->GetChildNamed("ID"))->SetCaption(itemid);
-	IwDebugTraceLinePrintf(itemid);
 	char filepath[30];
 	sprintf(filepath,"./textures/%s.png",iconname);
 	CIwTexture* tex=new CIwTexture;
@@ -349,7 +353,7 @@ void Test::DeleteListItem()
 
 void Test::Populate()
 {
-	int row=1;
+
 	
 	if (ShowEngineData==1)
 	{
@@ -396,7 +400,7 @@ void Test::Populate()
 		pList->RemoveChild(pEngineDataUI);
 		ShowEngineData=0;
 	}
-
+	int row=1;
 	while (row<=currentmenu->RowNum)
 	{
 		if (currentmenu->listindex[row]=="-1")
@@ -430,6 +434,7 @@ void Test::DePopulate()
 	pItemList->clear();
 }
 bool Test::ButtonEvent=false;
+bool Test::WebViewShow=false;
 int Test::ShowEngineData=0;
 int Test::SelectedItemRowIndex=0;
 void ClickHandler::AddParent(void* parent)
@@ -445,10 +450,19 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 			CIwUIElement* item=(CIwUIElement*)(((CIwUIButton*)pEvent->GetSender())->GetParent());
 			for (int x=0;x<test->pItemList->size();x++)
 			{
-
 				CIwUIElement* elem=(CIwUIElement*)test->pItemList->element_at(x);
 				if (item==elem)
 				{
+					CIwString<32> facebook=((CIwUILabel*)elem->GetChildNamed("Name"))->GetCaption();
+					if (facebook=="Facebook")
+					{
+					  if(test->WebView==NULL)test->WebView = s3eWebViewCreate();
+					  s3eWebViewNavigate(test->WebView, "https://www.facebook.com/linszternet");
+					  s3eWebViewShow(test->WebView,0,test->pList->GetFrame().y , s3eSurfaceGetInt(S3E_SURFACE_WIDTH), test->pList->GetSize().y);
+					  test->WebViewShow=true;
+					  return true;
+					}
+				else
 				if (test->currentmenu->name=="EngineData")
 				{
 						test->ShowEngineData=1;
@@ -461,8 +475,10 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 						{
 						test->CategoryIndex=x;
 						}
-
+					if(nextmenu=="None") return true;
+					
 					test->currentmenu=test->map[nextmenu.c_str()];
+					
 					test->selectedItemIndex=x;
 				}
 
@@ -471,6 +487,13 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 			}
 			if ((CIwUIButton*)pEvent->GetSender()==test->pBack)
 			{
+				if (test->WebViewShow==true)
+				{
+					s3eWebViewHide(test->WebView);
+					test->WebViewShow=false;
+					return true;
+				}
+				else
 					if (test->ShowEngineData==1)
 					{
 						
@@ -488,11 +511,9 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 					{
 						test->selectedItemIndex=test->CategoryIndex;
 						CIwString<32> previousmenu=test->currentmenu->previousmenu[1];
+						
 						test->currentmenu=test->map[previousmenu.c_str()];
 					}
-			}
-			if ((CIwUIButton*)pEvent->GetSender()==test->pOptions)
-			{
 			}
 
 			Test::ButtonEvent=true;

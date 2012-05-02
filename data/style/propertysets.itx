@@ -4,7 +4,7 @@ CIwUIPropertySet
 
 	sizeToContent false
 	font "gxfont_large"
-	textColour { 255 255 255 255 }
+	textColour { 0 0 0 255 }
 	alignH "centre"
 	alignV "middle"
 	margin  { 0 0 }
@@ -15,7 +15,7 @@ CIwUIPropertySet
 
 	sizeToContent false
 	font "gxfont_medium"
-	textColour { 255 255 255 255 }
+	textColour { 0 0 0 255 }
 	alignH "centre"
 	alignV "middle"
 	margin  { 0 0 }
@@ -25,7 +25,7 @@ CIwUIPropertySet
 	name "<font_description>"
 	sizeToContent false
 	font "gxfont_small"
-	textColour {255 255 255 255 }
+	textColour {0 0 0 255 }
 	alignH "centre"
 	alignV "middle"
 	margin  { 0 0 }
@@ -33,15 +33,11 @@ CIwUIPropertySet
 }
 CIwUIPropertySet 
 {
-	name "<icon>"
-	drawableType "border"
-	border  { 1 1 }
-}
-CIwUIPropertySet 
-{
 	name "<background>"
 	drawableType "border"
 	texture "background"
+	sizeMin  { 320 480 }
+
 	border  { 1 1 }
 }
 CIwUIPropertySet 
@@ -99,4 +95,69 @@ CIwUIPropertySet
 	drawableType "border"
 	texture "dialog_button2"
 	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<Main>"
+	sizeMin  { 320 480 }
+}
+CIwUIPropertySet 
+{
+	name "<Label>"
+	sizeMin  { 320 44 }
+	alignV "middle"
+	background  <header_back>
+	style <font_title>
+}
+CIwUIPropertySet 
+{
+	name "<Options>"
+	style <font_description>
+	sizeMin  { 65 44 }
+	sizeMax  { 65 44 }
+	buttonUp <back_button1>
+	buttonDown <back_button2>
+}
+CIwUIPropertySet 
+{
+	name "<Empty>"
+	style <font_description>
+	sizeMin  { 190 44 }
+	sizeMax  { 190 44 }
+}
+CIwUIPropertySet 
+{
+	name "<Back>"
+	style <font_description>
+	sizeMin  { 65 44 }
+	sizeMax  { 65 44 }
+	buttonUp <back_button1>
+	buttonDown <back_button2>
+}
+CIwUIPropertySet 
+{
+	name "<Icon>"
+	sizeMin { 48 48 }
+	sizeMax { 48 48 }
+	drawableType "border"
+	border  { 1 1 }
+}
+CIwUIPropertySet 
+{
+	name "<Button>"
+	buttonUp <list_back1>
+	buttonDown <list_back2>
+	sizeMin { 320 0 }
+}
+CIwUIPropertySet 
+{
+	name "<Name>"
+	style <font_name>
+	sizeMin { 320 24 }
+}
+CIwUIPropertySet 
+{
+	name "<Desc>"
+	style <font_description>
+	sizeMin { 320 24 }
 }

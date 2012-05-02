@@ -5,15 +5,19 @@ CIwResGroup
 	name "Test"
 
 
+	resources.group
+
+
+	./style/font.ui
+
+	./style/stylesheet.itx
+
+
+
 	./style/main.ui
 
 	./style/list.ui
 	./style/quit.ui
 
         ./style/data.ui
-	resources.group
-
-	./style/stylesheet.itx
-
-
 }

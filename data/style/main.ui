@@ -1,64 +1,65 @@
-
 CIwUIElement 
 {
 	name "Main"
-	pos  { 0 0 }
-	size  { 320 480 }
+	style <Main>
 	CIwUIImage 
 	{
 		name "background"
-		pos  { 0 0 }
-		size  { 320 480 }
 		style <background>
-		sizeMin  { 320 480 }
 	}
-	CIwUILabel 
+	CIwUILabel
 	{
 		name "Label"
-		pos  { 0 0 }
-		size  { 320 44 }
-		style <font_title>
-		sizeMin  { 0 44 }
+		style <Label>
 		caption "Honda Database"
-		alignV "middle"
-		background  <header_back>
 		CIwUIButton 
 		{
 			name "Options"
-			pos  { 250 7 }
-			size  { 65 30 }
-			style <font_description>
-			sizeMin  { 65 30 }
-			sizeMax  { 65 30 }
+			style <Options>
 			caption "Options"
-			buttonUp <back_button1>
-			buttonDown <back_button2>
+		}
+		CIwUIButton 
+		{
+			name "Empty"
+			style <Empty>
 		}
 		CIwUIButton 
 		{
 			name "Back"
-			pos  { 7 7 }
-			size  { 65 30 }
-			style <font_description>
-			sizeMin  { 65 30 }
-			sizeMax  { 65 30 }
+			style <Back>
 			caption "Back"
-			buttonUp <back_button1>
-			buttonDown <back_button2>
+		}
+		CIwUILayoutHorizontal 
+		{
+			name ""
+			sizeToSpace true
+			element 
+			{
+				name "Options"
+				alignH "left"
+			}
+			element 
+			{
+				name "Empty"
+
+			}
+			element 
+			{
+				name "Back"
+				alignH "right"
+
+			}
 		}
 	}
 	CIwUIScrollableView 
 	{
 		name "List"
-		pos  { 0 50 }
-		size  { 320 0 }
-		sizeMax  { -1 -1 }
 		updatable true
 		clipped true
 		scrollToFocus true
 		CIwUILayoutVertical 
 		{
-			name ""
+				name ""
 		}
 	}
 	CIwUILayoutVertical 
@@ -74,22 +75,4 @@ CIwUIElement
 			name "List"
 		}
 	}
-}
-CIwGxFont
-{
-	name "gxfont_large"
-	ttf "./fonts/arialbd.ttf"
-	ttfPointSize 7	
-}
-CIwGxFont
-{
-	name "gxfont_medium"
-	ttf "./fonts/arialbd.ttf"
-	ttfPointSize 6	
-}
-CIwGxFont
-{
-	name "gxfont_small"
-	ttf "./fonts/arial.ttf"
-	ttfPointSize 5	
 }

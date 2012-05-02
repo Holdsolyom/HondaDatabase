@@ -5,6 +5,7 @@
 #include "s3e.h"
 #include "IwGx.h"
 #include "IwUI.h"
+#include "s3eWebView.h"
 #include "cstdlib"
 #include "map"
 
@@ -130,7 +131,16 @@ public:
 	void InitUI();
 	void LoadMenu(std::string name);
 	CIwList<CIwUIElement*>* pItemList;
+	CIwUIElement* pLabel;
+	CIwUIElement* pItemTemplate;
+	CIwUIElement* pEngineDataUI;
+	CIwUIElement* pMainui;
+	CIwUIElement* pMainuiClone;
+	CIwTexture* pIcon;
+	CIwTexture* pBG;
+	ClickHandler* handler;
 	CIwList<CIwTexture*>* pTextures;
+	CIwUIElement* pList;
 	int selectedItemIndex;
 	int CategoryIndex;
 	Menu* currentmenu;
@@ -178,21 +188,16 @@ public:
 	CIwUIButton* pOptions;
 	CIwUIAlertDialog* pAlertDialog;
 	static bool ButtonEvent;
+	static bool WebViewShow;
 	static int ShowEngineData;
 	static int SelectedItemRowIndex;
 	sqlite3* db;
 	std::map<std::string, Menu*> map;
+	s3eWebView* WebView;
 private:
 	
-	CIwUIElement* pList;
-	CIwUIElement* pLabel;
-	CIwUIElement* pItemTemplate;
-	CIwUIElement* pEngineDataUI;
-	CIwUIElement* pMainui;
-	CIwUIElement* pMainuiClone;
-	CIwTexture* pIcon;
-	CIwTexture* pBG;
-	ClickHandler* handler;
+
+
 
 	
 
