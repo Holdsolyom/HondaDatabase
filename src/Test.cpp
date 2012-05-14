@@ -370,7 +370,7 @@ void Test::Populate()
 {
 
 	
-	if (ShowEngineData==1)
+	if (ShowEngineData==SHOW)
 	{
 		pList->AddChild(pEngineDataUI);
 		pList->GetLayout()->AddElement(pEngineDataUI);
@@ -409,7 +409,7 @@ void Test::Populate()
 		return;
 	} 
 	else
-		if (ShowTransData==1)
+		if (ShowTransData==SHOW)
 	{
 		((CIwUILabel*)pTransDataUI->GetChildNamed("name"))->SetCaption(TransData->text[SelectedItemRowIndex].c_str());
 		((CIwUILabel*)pTransDataUI->GetChildNamed("desc"))->SetCaption(TransData->description[SelectedItemRowIndex].c_str());
@@ -427,17 +427,17 @@ void Test::Populate()
 		pList->GetLayout()->AddElement(pTransDataUI);
 		return;
 	} 
-	if (ShowEngineData==2)
+	if (ShowEngineData==HIDE)
 	{	
 		pList->GetLayout()->RemoveElement(pEngineDataUI);
 		pList->RemoveChild(pEngineDataUI);
-		ShowEngineData=0;
+		ShowEngineData=OFF;
 	}
-		if (ShowTransData==2)
+		if (ShowTransData==HIDE)
 	{	
 		pList->GetLayout()->RemoveElement(pTransDataUI);
 		pList->RemoveChild(pTransDataUI);
-		ShowTransData=0;
+		ShowTransData=OFF;
 	}
 	int row=1;
 	while (row<=currentmenu->RowNum)
@@ -474,8 +474,8 @@ void Test::DePopulate()
 }
 bool Test::ButtonEvent=false;
 bool Test::WebViewShow=false;
-int Test::ShowEngineData=0;
-int Test::ShowTransData=0;
+MenuState Test::ShowEngineData=OFF;
+MenuState Test::ShowTransData=OFF;
 int Test::SelectedItemRowIndex=0;
 void ClickHandler::AddParent(void* parent)
 {
@@ -505,13 +505,13 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 				else
 				if (test->currentmenu->name=="EngineData")
 				{
-						test->ShowEngineData=1;
+						test->ShowEngineData=SHOW;
 						test->SelectedItemRowIndex=atoi(((CIwUILabel*)elem->GetChildNamed("ID"))->GetCaption());
 				}
 				else
 				if (test->currentmenu->name=="TransData")
 				{
-						test->ShowTransData=1;
+						test->ShowTransData=SHOW;
 						test->SelectedItemRowIndex=atoi(((CIwUILabel*)elem->GetChildNamed("ID"))->GetCaption());
 				}
 				else
@@ -540,16 +540,16 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 					return true;
 				}
 				else
-					if (test->ShowEngineData==1)
+					if (test->ShowEngineData==SHOW)
 					{
 						
-						test->ShowEngineData=2;
+						test->ShowEngineData=HIDE;
 					}
 					else
-					if (test->ShowTransData==1)
+					if (test->ShowTransData==SHOW)
 					{
 						
-						test->ShowTransData=2;
+						test->ShowTransData=HIDE;
 					}
 					else
 					if (test->currentmenu->name=="MainMenu")
