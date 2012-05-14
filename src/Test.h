@@ -103,6 +103,33 @@ public:
 		CIwString<64>* EEcucode;
 		CIwString<768>* EDesc;
 };
+class TransDataMenu : public Menu
+{
+	public:
+		TransDataMenu(int num) : Menu(num)
+		{
+		Type=new CIwString<32>[num];
+		LSD=new CIwString<32>[num];
+		_1st=new CIwString<32>[num];
+		_2nd=new CIwString<32>[num];
+		_3rd=new CIwString<32>[num];
+		_4th=new CIwString<32>[num];
+		_5th=new CIwString<32>[num];
+		_6th=new CIwString<32>[num];
+		R=new CIwString<32>[num];
+		Final=new CIwString<32>[num];
+		}
+		CIwString<32>* Type;
+		CIwString<32>* LSD;
+		CIwString<32>* _1st;
+		CIwString<32>* _2nd;
+		CIwString<32>* _3rd;
+		CIwString<32>* _4th;
+		CIwString<32>* _5th;
+		CIwString<32>* _6th;
+		CIwString<32>* R;
+		CIwString<32>* Final;
+};
 class ClickHandler : public CIwUIElementEventHandler
 {
 public:
@@ -134,6 +161,7 @@ public:
 	CIwUIElement* pLabel;
 	CIwUIElement* pItemTemplate;
 	CIwUIElement* pEngineDataUI;
+	CIwUIElement* pTransDataUI;
 	CIwUIElement* pMainui;
 	CIwUIElement* pMainuiClone;
 	CIwTexture* pIcon;
@@ -153,7 +181,7 @@ public:
 	Menu* OBD1List;
 	Menu* OBD2List;
 	Menu* Transmissions;
-	Menu* TransData;
+	TransDataMenu* TransData;
 	Menu* CWList;
 	Menu* CW85;
 	Menu* CW86;
@@ -190,6 +218,7 @@ public:
 	static bool ButtonEvent;
 	static bool WebViewShow;
 	static int ShowEngineData;
+	static int ShowTransData;
 	static int SelectedItemRowIndex;
 	sqlite3* db;
 	std::map<std::string, Menu*> map;

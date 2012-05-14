@@ -20,4 +20,5 @@ CIwResGroup
 	./style/quit.ui
 
         ./style/data.ui
+	./style/trans.ui
 }

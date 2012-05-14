@@ -39,6 +39,7 @@ void Test::InitUI()
 	pMainuiClone->AddEventHandler(handler);
 	pItemTemplate = (CIwUIElement*)IwGetResManager()->GetResNamed("Item", "CIwUIElement");
 	pEngineDataUI = (CIwUIElement*)IwGetResManager()->GetResNamed("EngineDataUI", "CIwUIElement");
+	pTransDataUI = (CIwUIElement*)IwGetResManager()->GetResNamed("TransDataUI", "CIwUIElement");
 	pQuit=(CIwUIElement*)IwGetResManager()->GetResNamed("Quit", "CIwUIElement");
 	pAlertDialog=(CIwUIAlertDialog*)pQuit->GetChildNamed("AlertDialog");
 	pQuit->SetVisible(false);
@@ -157,7 +158,7 @@ void Test::LoadDatabase()
 	map["OBD2List"] =OBD2List;
 	Transmissions=new Menu(10);
 	map["Transmissions"] =Transmissions;
-	TransData=new Menu(120);
+	TransData=new TransDataMenu(120);
 	map["TransData"] =TransData;
 	CWList=new Menu(200);
 	map["CWList"] =CWList;
@@ -310,7 +311,21 @@ void Test::LoadMenu(std::string name)
 		((EngineDataMenu*)map[name])->EEcucode[x]=result[38].c_str();
 		((EngineDataMenu*)map[name])->EDesc[x]=result[39].c_str();
 		}
+	if (name=="TransData")
+	{
+		((TransDataMenu*)map[name])->listindex2[x]=result[8].c_str();
+		((TransDataMenu*)map[name])->Type[x]=result[9].c_str();
+		((TransDataMenu*)map[name])->LSD[x]=result[10].c_str();
+		((TransDataMenu*)map[name])->_1st[x]=result[11].c_str();
+		((TransDataMenu*)map[name])->_2nd[x]=result[12].c_str();
+		((TransDataMenu*)map[name])->_3rd[x]=result[13].c_str();
+		((TransDataMenu*)map[name])->_4th[x]=result[14].c_str();
+		((TransDataMenu*)map[name])->_5th[x]=result[15].c_str();
+		((TransDataMenu*)map[name])->_6th[x]=result[16].c_str();
+		((TransDataMenu*)map[name])->R[x]=result[17].c_str();
+		((TransDataMenu*)map[name])->Final[x]=result[18].c_str();
 	}
+  }
 
 }
 void Test::AddListItem(int ItemId,const char* iconname,const char* name,const char* desc)
@@ -394,11 +409,35 @@ void Test::Populate()
 		return;
 	} 
 	else
+		if (ShowTransData==1)
+	{
+		((CIwUILabel*)pTransDataUI->GetChildNamed("name"))->SetCaption(TransData->text[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("desc"))->SetCaption(TransData->description[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("type"))->SetCaption(TransData->Type[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("lsd"))->SetCaption(TransData->LSD[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("1th"))->SetCaption(TransData->_1st[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("2nd"))->SetCaption(TransData->_2nd[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("3rd"))->SetCaption(TransData->_3rd[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("4th"))->SetCaption(TransData->_4th[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("5th"))->SetCaption(TransData->_5th[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("6th"))->SetCaption(TransData->_6th[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("reverse"))->SetCaption(TransData->R[SelectedItemRowIndex].c_str());
+		((CIwUILabel*)pTransDataUI->GetChildNamed("final"))->SetCaption(TransData->Final[SelectedItemRowIndex].c_str());
+		pList->AddChild(pTransDataUI);
+		pList->GetLayout()->AddElement(pTransDataUI);
+		return;
+	} 
 	if (ShowEngineData==2)
 	{	
 		pList->GetLayout()->RemoveElement(pEngineDataUI);
 		pList->RemoveChild(pEngineDataUI);
 		ShowEngineData=0;
+	}
+		if (ShowTransData==2)
+	{	
+		pList->GetLayout()->RemoveElement(pTransDataUI);
+		pList->RemoveChild(pTransDataUI);
+		ShowTransData=0;
 	}
 	int row=1;
 	while (row<=currentmenu->RowNum)
@@ -436,6 +475,7 @@ void Test::DePopulate()
 bool Test::ButtonEvent=false;
 bool Test::WebViewShow=false;
 int Test::ShowEngineData=0;
+int Test::ShowTransData=0;
 int Test::SelectedItemRowIndex=0;
 void ClickHandler::AddParent(void* parent)
 {
@@ -469,6 +509,12 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 						test->SelectedItemRowIndex=atoi(((CIwUILabel*)elem->GetChildNamed("ID"))->GetCaption());
 				}
 				else
+				if (test->currentmenu->name=="TransData")
+				{
+						test->ShowTransData=1;
+						test->SelectedItemRowIndex=atoi(((CIwUILabel*)elem->GetChildNamed("ID"))->GetCaption());
+				}
+				else
 				{
 					CIwString<32> nextmenu=test->currentmenu->nextmenu[x+1];
 					if (test->currentmenu->name=="EngineList")
@@ -498,6 +544,12 @@ bool ClickHandler::HandleEvent(CIwEvent* pEvent)
 					{
 						
 						test->ShowEngineData=2;
+					}
+					else
+					if (test->ShowTransData==1)
+					{
+						
+						test->ShowTransData=2;
 					}
 					else
 					if (test->currentmenu->name=="MainMenu")
